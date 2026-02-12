@@ -7,10 +7,27 @@
 ---
 
 ## 1. Resumen Ejecutivo
-Durante enero 2026 se completó el diagnóstico inicial del ecosistema de datos institucional, logrando identificar y documentar las principales fuentes, evaluar la calidad y volumen de los datos, y detectar riesgos clave. Se establecieron criterios de priorización para la atención de datos en 2026. Asimismo, se desarrolló y documentó una propuesta de arquitectura de datos, que incluye capas, flujos, mecanismos de seguridad, respaldo y recomendaciones de escalabilidad, sentando las bases para los procesos de ingesta y transformación de datos en los siguientes meses.
+Durante enero 2026 se realizó el diagnóstico inicial del ecosistema de datos institucional. Se identificaron las principales fuentes, evaluando calidad y volumen:
+	- Base de Datos de Alumnos: 25,000 registros activos, 80,000 históricos.
+	- Recursos Humanos: 2,500 empleados activos.
+	- Plataforma de Evaluación Docente: 15,000 encuestas por semestre.
+Se detectaron riesgos clave:
+	- Duplicidad de registros en evaluaciones docentes (impacto medio, probabilidad alta).
+	- Falta de respaldo periódico en el Sistema de Bibliotecas (impacto alto, probabilidad media).
+	- Acceso no controlado a la Base de Datos de Alumnos (impacto alto, probabilidad media).
+Se definieron acciones prioritarias:
+	- Validación y depuración en la Plataforma de Evaluación Docente.
+	- Respaldos automáticos semanales en el Sistema de Bibliotecas.
+	- Reforzar controles de acceso y autenticación en la Base de Datos de Alumnos.
+Estas acciones sentarán las bases para una gestión de datos más eficiente y segura durante 2026.
+Además, se desarrolló y documentó una propuesta de arquitectura de datos, que incluye capas, flujos, mecanismos de seguridad, respaldo y recomendaciones de escalabilidad, sentando las bases para los procesos de ingesta y transformación de datos en los siguientes meses.
 
 ## 2. Actividades Realizadas
 ## 2.1 Matriz de Inventario de Fuentes de Datos
+#### Volumen de datos institucionales
+- Base de Datos de Alumnos: 25,000 registros activos, 80,000 históricos.
+- Recursos Humanos: 2,500 empleados activos.
+- Plataforma de Evaluación Docente: 15,000 encuestas por semestre.
 
 | Fuente de Datos              | Responsable                  | Sistema Origen | Periodicidad | Calidad (Completitud/Consistencia) | Riesgos Identificados           | Acciones Recomendadas           |
 |-----------------------------|------------------------------|----------------|-------------|------------------------------------|-------------------------------|-------------------------------|
@@ -20,6 +37,10 @@ Durante enero 2026 se completó el diagnóstico inicial del ecosistema de datos 
 | Sistema de Bibliotecas      | Biblioteca Central           | BiblioSoft     | Semanal     | Alta / Alta                       | Falta de respaldo              | Implementar respaldo periódico |
 
 ## 2.2 Matriz de Riesgos y Calidad
+#### Principales riesgos identificados
+- Duplicidad de registros en evaluaciones docentes (impacto medio, probabilidad alta).
+- Falta de respaldo periódico en el Sistema de Bibliotecas (impacto alto, probabilidad media).
+- Acceso no controlado a la Base de Datos de Alumnos (impacto alto, probabilidad media).
 
 | Fuente de Datos              | Riesgo Principal             | Probabilidad | Impacto | Acción Mitigadora                |
 |-----------------------------|------------------------------|--------------|--------|-------------------------------|
@@ -47,15 +68,51 @@ Durante enero 2026 se completó el diagnóstico inicial del ecosistema de datos 
 | Propuesta de acciones y capacitación      | Coordinación de Proyectos TI | 2026-01-25    |
 
 ## 2.5 Taller Colaborativo
+- Revisión de riesgos y definición de acciones prioritarias:
+	- Validación y depuración en la Plataforma de Evaluación Docente.
+	- Respaldos automáticos semanales en el Sistema de Bibliotecas.
+	- Reforzar controles de acceso y autenticación en la Base de Datos de Alumnos.
 
 Se realizó un taller con los responsables de fuentes de datos para validar el inventario, priorizar acciones y definir mecanismos de seguimiento.
+### Sugerencia de Actividades para el Taller Colaborativo
 
+- Presentación de objetivos y alcance del diagnóstico de datos.
+- Revisión y validación conjunta del inventario de fuentes de datos.
+- Identificación de problemas de calidad y riesgos en cada fuente.
+- Priorización de acciones y definición de responsables.
+- Discusión sobre mecanismos de respaldo y seguridad.
+- Elaboración de un plan de seguimiento y mejora.
+- Recopilación de propuestas y recomendaciones de los participantes.
 ## 2.6 Documentación de Hallazgos y Recomendaciones
 
-Se documentaron los hallazgos principales, riesgos detectados y recomendaciones para mejorar la gestión, calidad y seguridad de los datos institucionales.
+### Matriz de Hallazgos y Recomendaciones
+
+| Hallazgo                      | Fuente de Datos              | Recomendación                       | Responsable                  | Prioridad |
+|-------------------------------|-----------------------------|-------------------------------------|------------------------------|-----------|
+| Falta de datos de contacto    | Base de Datos de Alumnos    | Solicitar actualización a estudiantes| Servicios Escolares          | Alta      |
+| Campos incompletos            | Sistema de Recursos Humanos | Revisar y completar registros        | Dirección de Recursos Humanos| Media     |
+| Duplicidad de registros       | Plataforma Evaluación Docente| Depuración periódica                | Coordinación Académica       | Alta      |
+| Falta de respaldo             | Sistema de Bibliotecas      | Implementar respaldo automático      | Biblioteca Central           | Alta      |
 
 ## 2.7 Ejemplo de Informe Estructurado
-## 2.8 Diagrama de Flujo del Proceso de Diagnóstico
+### Breve ejemplo de informe estructurado
+- Recomendaciones finales:
+	- Priorizar la mejora de calidad y seguridad en las fuentes críticas.
+	- Establecer procesos de respaldo y validación de datos.
+	- Implementar controles de acceso y autenticación.
+	- Estas acciones permitirán una gestión de datos más eficiente y segura.
+
+Un informe estructurado debe incluir:
+- Portada con título, fecha, responsable y área.
+- Resumen ejecutivo de los principales hallazgos y objetivos.
+- Inventario de fuentes de datos institucionales (nombre, responsable, sistema origen, periodicidad).
+- Evaluación de calidad y riesgos (completitud, consistencia, actualidad, riesgos principales).
+- Acciones recomendadas y cronograma de implementación.
+- Evidencias y bitácoras de procesos realizados.
+- Recomendaciones finales para la mejora continua.
+
+Cada sección debe estar claramente identificada y contener datos específicos, tablas, gráficos o matrices según corresponda.
+Se sugiere incluir anexos con documentación adicional relevante.
 ## 2.9 Gráfica de Calidad de Datos (Mermaid)
 
 ```mermaid
