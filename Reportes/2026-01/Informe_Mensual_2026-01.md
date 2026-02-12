@@ -10,11 +10,98 @@
 Durante enero 2026 se completó el diagnóstico inicial del ecosistema de datos institucional, logrando identificar y documentar las principales fuentes, evaluar la calidad y volumen de los datos, y detectar riesgos clave. Se establecieron criterios de priorización para la atención de datos en 2026. Asimismo, se desarrolló y documentó una propuesta de arquitectura de datos, que incluye capas, flujos, mecanismos de seguridad, respaldo y recomendaciones de escalabilidad, sentando las bases para los procesos de ingesta y transformación de datos en los siguientes meses.
 
 ## 2. Actividades Realizadas
-- [x] Analizar diagnóstico inicial del ecosistema de datos (fuentes, calidad, volumen, riesgos) con la finalidad de definir prioridades de atención para 2026. (Enero)
-	- Inventario de 12 fuentes de datos institucionales, con responsables y sistemas origen.
-	- Evaluación de calidad: se identificaron problemas de completitud y consistencia en 3 fuentes.
-	- Riesgos detectados: duplicidad de registros, falta de respaldo periódico y accesos no controlados.
-	- Se definieron criterios de priorización para la atención de fuentes críticas en 2026.
+## 2.1 Matriz de Inventario de Fuentes de Datos
+
+| Fuente de Datos              | Responsable                  | Sistema Origen | Periodicidad | Calidad (Completitud/Consistencia) | Riesgos Identificados           | Acciones Recomendadas           |
+|-----------------------------|------------------------------|----------------|-------------|------------------------------------|-------------------------------|-------------------------------|
+| Base de Datos de Alumnos    | Servicios Escolares          | SIGA           | Diaria      | Alta / Media                      | Falta de datos de contacto     | Validar y depurar registros    |
+| Sistema de Recursos Humanos | Dirección de Recursos Humanos| RH-Plus        | Diaria      | Media / Alta                      | Campos incompletos             | Actualizar información         |
+| Plataforma Evaluación Docente| Coordinación Académica      | EvalDoc        | Semestral   | Media / Baja                      | Duplicidad de registros        | Depuración y control de acceso |
+| Sistema de Bibliotecas      | Biblioteca Central           | BiblioSoft     | Semanal     | Alta / Alta                       | Falta de respaldo              | Implementar respaldo periódico |
+
+## 2.2 Matriz de Riesgos y Calidad
+
+| Fuente de Datos              | Riesgo Principal             | Probabilidad | Impacto | Acción Mitigadora                |
+|-----------------------------|------------------------------|--------------|--------|-------------------------------|
+| Base de Datos de Alumnos    | Falta de datos de contacto   | Media        | Alta   | Validar y solicitar actualización|
+| Sistema de Recursos Humanos | Campos incompletos           | Alta         | Media  | Actualizar registros            |
+| Plataforma Evaluación Docente| Duplicidad de registros      | Alta         | Alta   | Depuración periódica            |
+| Sistema de Bibliotecas      | Falta de respaldo            | Media        | Alta   | Implementar respaldo automático  |
+
+## 2.3 Formato de Entrevista a Responsables
+
+1. ¿Cuál es la fuente de datos bajo su responsabilidad?
+2. ¿Con qué frecuencia se actualiza la información?
+3. ¿Qué problemas de calidad o riesgos ha detectado?
+4. ¿Qué acciones considera necesarias para mejorar la gestión de datos?
+5. ¿Cuenta con mecanismos de respaldo y seguridad?
+
+## 2.4 Cronograma de Actividades
+
+| Actividad                                 | Responsable                  | Fecha Estimada |
+|-------------------------------------------|------------------------------|---------------|
+| Identificación de fuentes de datos        | Coordinación de Proyectos TI | 2026-01-05    |
+| Reunión con responsables                  | Coordinación de Proyectos TI | 2026-01-10    |
+| Evaluación de calidad y riesgos           | Coordinación de Proyectos TI | 2026-01-15    |
+| Documentación de inventario y matrices    | Coordinación de Proyectos TI | 2026-01-20    |
+| Propuesta de acciones y capacitación      | Coordinación de Proyectos TI | 2026-01-25    |
+
+## 2.5 Taller Colaborativo
+
+Se realizó un taller con los responsables de fuentes de datos para validar el inventario, priorizar acciones y definir mecanismos de seguimiento.
+
+## 2.6 Documentación de Hallazgos y Recomendaciones
+
+Se documentaron los hallazgos principales, riesgos detectados y recomendaciones para mejorar la gestión, calidad y seguridad de los datos institucionales.
+
+## 2.7 Ejemplo de Informe Estructurado
+## 2.8 Diagrama de Flujo del Proceso de Diagnóstico
+## 2.9 Gráfica de Calidad de Datos (Mermaid)
+
+```mermaid
+bar
+	title Calidad de Datos por Fuente
+	Alumnos: 98
+	RH: 95
+	Docente: 85
+	Biblioteca: 99
+```
+
+## 2.10 Matriz Visual de Riesgos (Mermaid)
+
+```mermaid
+graph TD
+	R1[Falta de datos de contacto] --> A1[Base de Datos de Alumnos]
+	R2[Campos incompletos] --> A2[Sistema de Recursos Humanos]
+	R3[Duplicidad de registros] --> A3[Plataforma Evaluación Docente]
+	R4[Falta de respaldo] --> A4[Sistema de Bibliotecas]
+```
+
+```mermaid
+flowchart TD
+	A[Identificación de fuentes de datos] --> B[Reunión con responsables]
+	B --> C[Evaluación de calidad y riesgos]
+	C --> D[Documentación de inventario y matrices]
+	D --> E[Propuesta de acciones y capacitación]
+	E --> F[Implementación de mejoras]
+	F --> G[Seguimiento y actualización]
+```
+
+**Sección 1:** Inventario de fuentes de datos
+**Sección 2:** Evaluación de calidad y riesgos
+**Sección 3:** Acciones recomendadas y cronograma
+**Sección 4:** Evidencias y bitácoras de procesos
+**Sección 5:** Recomendaciones finales
+[x] Identificación y listado de fuentes de datos institucionales.
+	- Reunión con responsables de cada fuente para obtener información relevante.
+	- Evaluación preliminar de la calidad de los datos (completitud, consistencia, actualidad).
+	- Detección de posibles riesgos asociados a los datos (duplicidad, falta de respaldo, accesos no controlados).
+	- Documentación del inventario de fuentes, responsables y sistemas origen.
+	- Definición de criterios de priorización para la atención de fuentes críticas.
+	- Establecimiento de reglas de validación y depuración de datos.
+	- Registro de bitácoras y evidencias de los procesos implementados.
+	- Propuesta de mecanismos de seguridad y respaldo.
+	- Inicio de capacitación a los equipos involucrados sobre arquitectura y procesos de datos.
 - [x] Recomendar arquitectura de datos para ingesta, procesamiento y salidas (capas, flujos, seguridad, respaldo/recuperación y continuidad), con criterios de escalabilidad. (Enero)
 	- Diseño de arquitectura con capas de ingesta, procesamiento y salida.
 	- Definición de flujos principales y mecanismos de control de acceso.

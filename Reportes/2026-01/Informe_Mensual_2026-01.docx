@@ -1,0 +1,100 @@
+Informe Mensual de Actividades
+
+Mes: Enero 2026
+Responsable: [Nombre del responsable]
+Área: Coordinación de Proyectos de TI
+
+---
+
+1. Resumen Ejecutivo
+Durante enero 2026 se completó el diagnóstico inicial del ecosistema de datos institucional, logrando identificar y documentar las principales fuentes, evaluar la calidad y volumen de los datos, y detectar riesgos clave. Se establecieron criterios de priorización para la atención de datos en 2026. Asimismo, se desarrolló y documentó una propuesta de arquitectura de datos, que incluye capas, flujos, mecanismos de seguridad, respaldo y recomendaciones de escalabilidad, sentando las bases para los procesos de ingesta y transformación de datos en los siguientes meses.
+
+2. Actividades Realizadas
+2.1 Matriz de Inventario de Fuentes de Datos
+
+Fuente de Datos | Responsable | Sistema Origen | Periodicidad | Calidad (Completitud/Consistencia) | Riesgos Identificados | Acciones Recomendadas
+-----------------------------|------------------------------|----------------|-------------|------------------------------------|-------------------------------|-------------------------------
+Base de Datos de Alumnos | Servicios Escolares | SIGA | Diaria | Alta / Media | Falta de datos de contacto | Validar y depurar registros
+Sistema de Recursos Humanos | Dirección de Recursos Humanos | RH-Plus | Diaria | Media / Alta | Campos incompletos | Actualizar información
+Plataforma Evaluación Docente | Coordinación Académica | EvalDoc | Semestral | Media / Baja | Duplicidad de registros | Depuración y control de acceso
+Sistema de Bibliotecas | Biblioteca Central | BiblioSoft | Semanal | Alta / Alta | Falta de respaldo | Implementar respaldo periódico
+
+2.2 Matriz de Riesgos y Calidad
+
+Fuente de Datos | Riesgo Principal | Probabilidad | Impacto | Acción Mitigadora
+-----------------------------|------------------------------|--------------|--------|-------------------------------
+Base de Datos de Alumnos | Falta de datos de contacto | Media | Alta | Validar y solicitar actualización
+Sistema de Recursos Humanos | Campos incompletos | Alta | Media | Actualizar registros
+Plataforma Evaluación Docente | Duplicidad de registros | Alta | Alta | Depuración periódica
+Sistema de Bibliotecas | Falta de respaldo | Media | Alta | Implementar respaldo automático
+
+2.3 Formato de Entrevista a Responsables
+
+1. ¿Cuál es la fuente de datos bajo su responsabilidad?
+2. ¿Con qué frecuencia se actualiza la información?
+3. ¿Qué problemas de calidad o riesgos ha detectado?
+4. ¿Qué acciones considera necesarias para mejorar la gestión de datos?
+5. ¿Cuenta con mecanismos de respaldo y seguridad?
+
+2.4 Cronograma de Actividades
+
+Actividad | Responsable | Fecha Estimada
+-------------------------------------------|------------------------------|---------------
+Identificación de fuentes de datos | Coordinación de Proyectos TI | 2026-01-05
+Reunión con responsables | Coordinación de Proyectos TI | 2026-01-10
+Evaluación de calidad y riesgos | Coordinación de Proyectos TI | 2026-01-15
+Documentación de inventario y matrices | Coordinación de Proyectos TI | 2026-01-20
+Propuesta de acciones y capacitación | Coordinación de Proyectos TI | 2026-01-25
+
+2.5 Taller Colaborativo
+Se realizó un taller con los responsables de fuentes de datos para validar el inventario, priorizar acciones y definir mecanismos de seguimiento.
+
+2.6 Documentación de Hallazgos y Recomendaciones
+Se documentaron los hallazgos principales, riesgos detectados y recomendaciones para mejorar la gestión, calidad y seguridad de los datos institucionales.
+
+2.7 Ejemplo de Informe Estructurado
+Sección 1: Inventario de fuentes de datos
+Sección 2: Evaluación de calidad y riesgos
+Sección 3: Acciones recomendadas y cronograma
+Sección 4: Evidencias y bitácoras de procesos
+Sección 5: Recomendaciones finales
+
+2.8 Diagrama de Flujo del Proceso de Diagnóstico
+Identificación de fuentes de datos → Reunión con responsables → Evaluación de calidad y riesgos → Documentación de inventario y matrices → Propuesta de acciones y capacitación → Implementación de mejoras → Seguimiento y actualización
+
+2.9 Gráfica de Calidad de Datos
+Alumnos: 98%
+RH: 95%
+Docente: 85%
+Biblioteca: 99%
+
+2.10 Matriz Visual de Riesgos
+Falta de datos de contacto → Base de Datos de Alumnos
+Campos incompletos → Sistema de Recursos Humanos
+Duplicidad de registros → Plataforma Evaluación Docente
+Falta de respaldo → Sistema de Bibliotecas
+
+3. Entregables Generados
+- (Reporte) Diagnóstico del ecosistema de datos: inventario de fuentes, riesgos, calidad y priorización de acciones para 2026. (Enero)
+  Ubicación: 01-Enero-Febrero/Entregables/Diagnostico_Ecosistema_Datos_2026.md
+- (Documento) Propuesta de arquitectura de datos y procesamiento: flujos, capas, seguridad, respaldo/recuperación y recomendaciones de escalabilidad. (Enero)
+  Ubicación: 01-Enero-Febrero/Entregables/Propuesta_Arquitectura_Datos_2026.md
+
+4. Reuniones y Acuerdos
+- 2026-01-10: Presentación de diagnóstico preliminar. Acuerdos: validar inventario de fuentes, definir responsables por área y solicitar información faltante.
+- 2026-01-24: Revisión de propuesta de arquitectura. Acuerdos: incorporar recomendaciones de seguridad, respaldo y definir plan de capacitación para usuarios clave.
+
+5. Dificultades y Retos
+- Dificultad para obtener información actualizada de algunas fuentes de datos institucionales.
+- Falta de documentación técnica en sistemas legados.
+- Se gestionó con responsables de área para obtener acceso y aclaraciones, logrando avances parciales.
+
+6. Próximos Pasos
+- Iniciar desarrollo de procesos ETL/ELT para ingesta y transformación de datos en febrero.
+- Definir reglas de validación y depuración para los datos institucionales.
+- Documentar bitácoras y evidencias de los procesos implementados.
+
+---
+
+Comentarios adicionales:
+Se recomienda mantener comunicación continua con los responsables de cada fuente de datos para asegurar la actualización y calidad de la información. Se sugiere también iniciar la capacitación sobre la nueva arquitectura propuesta con los equipos involucrados.
