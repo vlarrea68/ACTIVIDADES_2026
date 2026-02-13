@@ -11,6 +11,7 @@ Durante enero 2026 se realizó un análisis preliminar para definir las activida
 
 ## 2. Actividades Realizadas
 ## 2.1 Matriz de Inventario de Fuentes de Datos
+Esta tabla muestra las principales fuentes de datos institucionales, el área responsable, el sistema de origen, la periodicidad de actualización, el nivel de calidad, los riesgos identificados y las acciones recomendadas para cada fuente.
 #### Volumen de datos institucionales
 - Base de Datos de Alumnos: 25,000 registros activos, 80,000 históricos.
 - Recursos Humanos: 2,500 empleados activos.
@@ -24,6 +25,7 @@ Durante enero 2026 se realizó un análisis preliminar para definir las activida
 | Sistema de Bibliotecas      | Biblioteca Central           | BiblioSoft     | Semanal     | Alta / Alta                       | Falta de respaldo              | Implementar respaldo periódico |
 
 ## 2.2 Matriz de Riesgos y Calidad
+Esta tabla resume los riesgos principales asociados a cada fuente de datos, su probabilidad, impacto y la acción mitigadora sugerida para cada caso.
 #### Principales riesgos identificados
 - Duplicidad de registros en evaluaciones docentes (impacto medio, probabilidad alta).
 - Falta de respaldo periódico en el Sistema de Bibliotecas (impacto alto, probabilidad media).
@@ -45,6 +47,7 @@ Durante enero 2026 se realizó un análisis preliminar para definir las activida
 5. ¿Cuenta con mecanismos de respaldo y seguridad?
 
 ## 2.4 Cronograma de Actividades
+La siguiente tabla presenta el cronograma propuesto para las actividades clave del diagnóstico, indicando responsables y fechas estimadas de ejecución.
 
 | Actividad                                 | Responsable                  | Fecha Estimada |
 |-------------------------------------------|------------------------------|---------------|
