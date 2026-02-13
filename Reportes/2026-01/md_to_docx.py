@@ -17,7 +17,10 @@ def md_to_docx(md_path, docx_path):
     doc.add_heading('Informe Mensual de Actividades', 0)
 
     # Procesar líneas
-    for line in md_text.splitlines():
+    lines = md_text.splitlines()
+    i = 0
+    while i < len(lines):
+        line = lines[i]
         if line.startswith('# '):
             doc.add_heading(line[2:], level=1)
         elif line.startswith('## '):
@@ -29,15 +32,38 @@ def md_to_docx(md_path, docx_path):
         elif line.startswith('1. '):
             doc.add_paragraph(line, style='List Number')
         elif line.strip().startswith('|') and line.strip().endswith('|'):
-            # Saltar tablas markdown (no conversión directa)
-            continue
+            # Detectar inicio de tabla Markdown
+            table_lines = []
+            while i < len(lines) and lines[i].strip().startswith('|') and lines[i].strip().endswith('|'):
+                table_lines.append(lines[i].strip())
+                i += 1
+            # Procesar tabla Markdown
+            if len(table_lines) >= 2:
+                headers = [h.strip() for h in table_lines[0].strip('|').split('|')]
+                rows = [
+                    [cell.strip() for cell in row.strip('|').split('|')]
+                    for row in table_lines[2:]
+                ]
+                table = doc.add_table(rows=1, cols=len(headers))
+                table.style = 'Table Grid'
+                hdr_cells = table.rows[0].cells
+                for j, h in enumerate(headers):
+                    hdr_cells[j].text = h
+                for row in rows:
+                    row_cells = table.add_row().cells
+                    for j, cell in enumerate(row):
+                        row_cells[j].text = cell
+            continue  # Ya se avanzó el índice
         elif line.strip().startswith('```'):
             # Saltar bloques de código
-            continue
+            i += 1
+            while i < len(lines) and not lines[i].strip().startswith('```'):
+                i += 1
         elif line.strip() == '':
             doc.add_paragraph('')
         else:
             doc.add_paragraph(line)
+        i += 1
 
     # Guardar documento
     doc.save(docx_path)
