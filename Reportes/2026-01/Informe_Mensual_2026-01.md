@@ -7,20 +7,20 @@
 ---
 
 ## 1. Resumen Ejecutivo
-Durante enero 2026 se realizó el diagnóstico inicial del ecosistema de datos institucional. Se identificaron las principales fuentes, evaluando calidad y volumen:
-	- Base de Datos de Alumnos: 25,000 registros activos, 80,000 históricos.
-	- Recursos Humanos: 2,500 empleados activos.
-	- Plataforma de Evaluación Docente: 15,000 encuestas por semestre.
-Se detectaron riesgos clave:
-	- Duplicidad de registros en evaluaciones docentes (impacto medio, probabilidad alta).
-	- Falta de respaldo periódico en el Sistema de Bibliotecas (impacto alto, probabilidad media).
-	- Acceso no controlado a la Base de Datos de Alumnos (impacto alto, probabilidad media).
-Se definieron acciones prioritarias:
+Durante enero 2026 se realizó un análisis preliminar y se definieron actividades necesarias para llevar a cabo el diagnóstico del ecosistema de datos institucional. Se identificaron las principales fuentes, estimando calidad y volumen:
+	- Base de Datos de Alumnos: 25,000 registros activos, 80,000 históricos (estimado).
+	- Recursos Humanos: 2,500 empleados activos (estimado).
+	- Plataforma de Evaluación Docente: 15,000 encuestas por semestre (estimado).
+Se identificaron posibles riesgos:
+	- Duplicidad de registros en evaluaciones docentes.
+	- Falta de respaldo periódico en el Sistema de Bibliotecas.
+	- Acceso no controlado a la Base de Datos de Alumnos.
+Se propusieron acciones prioritarias:
 	- Validación y depuración en la Plataforma de Evaluación Docente.
 	- Respaldos automáticos semanales en el Sistema de Bibliotecas.
 	- Reforzar controles de acceso y autenticación en la Base de Datos de Alumnos.
-Estas acciones sentarán las bases para una gestión de datos más eficiente y segura durante 2026.
-Además, se desarrolló y documentó una propuesta de arquitectura de datos, que incluye capas, flujos, mecanismos de seguridad, respaldo y recomendaciones de escalabilidad, sentando las bases para los procesos de ingesta y transformación de datos en los siguientes meses.
+Estas actividades y propuestas sentarán las bases para una gestión de datos más eficiente y segura durante 2026.
+Además, se documentó una propuesta de arquitectura de datos, que incluye capas, flujos, mecanismos de seguridad, respaldo y recomendaciones de escalabilidad, como preparación para los procesos de ingesta y transformación de datos en los siguientes meses.
 
 ## 2. Actividades Realizadas
 ## 2.1 Matriz de Inventario de Fuentes de Datos
