@@ -7,20 +7,7 @@
 ---
 
 ## 1. Resumen Ejecutivo
-Durante enero 2026 se realizó un análisis preliminar y se definieron actividades necesarias para llevar a cabo el diagnóstico del ecosistema de datos institucional. Se identificaron las principales fuentes, estimando calidad y volumen:
-	- Base de Datos de Alumnos: 25,000 registros activos, 80,000 históricos (estimado).
-	- Recursos Humanos: 2,500 empleados activos (estimado).
-	- Plataforma de Evaluación Docente: 15,000 encuestas por semestre (estimado).
-Se identificaron posibles riesgos:
-	- Duplicidad de registros en evaluaciones docentes.
-	- Falta de respaldo periódico en el Sistema de Bibliotecas.
-	- Acceso no controlado a la Base de Datos de Alumnos.
-Se propusieron acciones prioritarias:
-	- Validación y depuración en la Plataforma de Evaluación Docente.
-	- Respaldos automáticos semanales en el Sistema de Bibliotecas.
-	- Reforzar controles de acceso y autenticación en la Base de Datos de Alumnos.
-Estas actividades y propuestas sentarán las bases para una gestión de datos más eficiente y segura durante 2026.
-Además, se documentó una propuesta de arquitectura de datos, que incluye capas, flujos, mecanismos de seguridad, respaldo y recomendaciones de escalabilidad, como preparación para los procesos de ingesta y transformación de datos en los siguientes meses.
+Durante enero 2026 se realizó un análisis preliminar para definir las actividades necesarias que permitan llevar a cabo el diagnóstico del ecosistema de datos institucional. Se plantearon propuestas para identificar fuentes de datos, estimar calidad y volumen, detectar posibles riesgos y establecer acciones prioritarias. Todas las cifras y riesgos mencionados son ejemplos o estimaciones para orientar el diagnóstico futuro. Se elaboró una propuesta de arquitectura de datos como preparación para los procesos de ingesta y transformación de datos en los siguientes meses.
 
 ## 2. Actividades Realizadas
 ## 2.1 Matriz de Inventario de Fuentes de Datos
