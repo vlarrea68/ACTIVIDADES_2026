@@ -11,24 +11,15 @@ Durante enero 2026 se realizó un análisis preliminar para definir las activida
 
 ## 2. Actividades Realizadas
 ## 2.1 Matriz de Inventario de Fuentes de Datos
-Esta tabla muestra las principales fuentes de datos institucionales, el área responsable, el sistema de origen, la periodicidad de actualización, el nivel de calidad, los riesgos identificados y las acciones recomendadas para cada fuente.
 #### Volumen de datos institucionales
 - Base de Datos de Alumnos: 25,000 registros activos, 80,000 históricos.
 - Recursos Humanos: 2,500 empleados activos.
 - Plataforma de Evaluación Docente: 15,000 encuestas por semestre.
 
 | Fuente de Datos              | Responsable                  | Sistema Origen | Periodicidad | Calidad (Completitud/Consistencia) | Riesgos Identificados           | Acciones Recomendadas           |
-|-----------------------------|------------------------------|----------------|-------------|------------------------------------|-------------------------------|-------------------------------|
-| Base de Datos de Alumnos    | Servicios Escolares          | SIGA           | Diaria      | Alta / Media                      | Falta de datos de contacto     | Validar y depurar registros    |
-| Sistema de Recursos Humanos | Dirección de Recursos Humanos| RH-Plus        | Diaria      | Media / Alta                      | Campos incompletos             | Actualizar información         |
-| Plataforma Evaluación Docente| Coordinación Académica      | EvalDoc        | Semestral   | Media / Baja                      | Duplicidad de registros        | Depuración y control de acceso |
-| Sistema de Bibliotecas      | Biblioteca Central           | BiblioSoft     | Semanal     | Alta / Alta                       | Falta de respaldo              | Implementar respaldo periódico |
-
-## 2.2 Matriz de Riesgos y Calidad
 Esta tabla resume los riesgos principales asociados a cada fuente de datos, su probabilidad, impacto y la acción mitigadora sugerida para cada caso.
 #### Principales riesgos identificados
 - Duplicidad de registros en evaluaciones docentes (impacto medio, probabilidad alta).
-- Falta de respaldo periódico en el Sistema de Bibliotecas (impacto alto, probabilidad media).
 - Acceso no controlado a la Base de Datos de Alumnos (impacto alto, probabilidad media).
 
 | Fuente de Datos              | Riesgo Principal             | Probabilidad | Impacto | Acción Mitigadora                |
@@ -38,8 +29,6 @@ Esta tabla resume los riesgos principales asociados a cada fuente de datos, su p
 | Plataforma Evaluación Docente| Duplicidad de registros      | Alta         | Alta   | Depuración periódica            |
 | Sistema de Bibliotecas      | Falta de respaldo            | Media        | Alta   | Implementar respaldo automático  |
 
-## 2.3 Formato de Entrevista a Responsables
-
 1. ¿Cuál es la fuente de datos bajo su responsabilidad?
 2. ¿Con qué frecuencia se actualiza la información?
 3. ¿Qué problemas de calidad o riesgos ha detectado?
@@ -47,8 +36,6 @@ Esta tabla resume los riesgos principales asociados a cada fuente de datos, su p
 5. ¿Cuenta con mecanismos de respaldo y seguridad?
 
 ## 2.4 Cronograma de Actividades
-La siguiente tabla presenta el cronograma propuesto para las actividades clave del diagnóstico, indicando responsables y fechas estimadas de ejecución.
-
 | Actividad                                 | Responsable                  | Fecha Estimada |
 |-------------------------------------------|------------------------------|---------------|
 | Identificación de fuentes de datos        | Coordinación de Proyectos TI | 2026-01-05    |
@@ -63,33 +50,21 @@ La siguiente tabla presenta el cronograma propuesto para las actividades clave d
 	- Respaldos automáticos semanales en el Sistema de Bibliotecas.
 	- Reforzar controles de acceso y autenticación en la Base de Datos de Alumnos.
 
-Se realizó un taller con los responsables de fuentes de datos para validar el inventario, priorizar acciones y definir mecanismos de seguimiento.
 ### Sugerencia de Actividades para el Taller Colaborativo
 
 - Presentación de objetivos y alcance del diagnóstico de datos.
 - Revisión y validación conjunta del inventario de fuentes de datos.
 - Identificación de problemas de calidad y riesgos en cada fuente.
 - Priorización de acciones y definición de responsables.
-- Discusión sobre mecanismos de respaldo y seguridad.
 - Elaboración de un plan de seguimiento y mejora.
-- Recopilación de propuestas y recomendaciones de los participantes.
 ## 2.6 Documentación de Hallazgos y Recomendaciones
 
 ### Matriz de Hallazgos y Recomendaciones
-
-| Hallazgo                      | Fuente de Datos              | Recomendación                       | Responsable                  | Prioridad |
 |-------------------------------|-----------------------------|-------------------------------------|------------------------------|-----------|
 | Falta de datos de contacto    | Base de Datos de Alumnos    | Solicitar actualización a estudiantes| Servicios Escolares          | Alta      |
-| Campos incompletos            | Sistema de Recursos Humanos | Revisar y completar registros        | Dirección de Recursos Humanos| Media     |
-| Duplicidad de registros       | Plataforma Evaluación Docente| Depuración periódica                | Coordinación Académica       | Alta      |
-| Falta de respaldo             | Sistema de Bibliotecas      | Implementar respaldo automático      | Biblioteca Central           | Alta      |
 
 ## 2.7 Ejemplo de Informe Estructurado
-### Breve ejemplo de informe estructurado
-- Recomendaciones finales:
-	- Priorizar la mejora de calidad y seguridad en las fuentes críticas.
 	- Establecer procesos de respaldo y validación de datos.
-	- Implementar controles de acceso y autenticación.
 	- Estas acciones permitirán una gestión de datos más eficiente y segura.
 
 Un informe estructurado debe incluir:
@@ -103,16 +78,6 @@ Un informe estructurado debe incluir:
 
 Cada sección debe estar claramente identificada y contener datos específicos, tablas, gráficos o matrices según corresponda.
 Se sugiere incluir anexos con documentación adicional relevante.
-## 2.9 Gráfica de Calidad de Datos (Mermaid)
-
-```mermaid
-bar
-	title Calidad de Datos por Fuente
-	Alumnos: 98
-	RH: 95
-	Docente: 85
-	Biblioteca: 99
-```
 
 ## 2.10 Matriz Visual de Riesgos (Mermaid)
 
