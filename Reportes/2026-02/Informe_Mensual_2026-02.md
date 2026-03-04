@@ -270,6 +270,20 @@ El objetivo para los próximos meses es consolidar la exposición de datos media
 ---
 
 **Comentarios adicionales:**
+## 10. Glosario de Términos Técnicos
+
+**ETL (Extract, Transform, Load):** Proceso de extracción, transformación y carga de datos desde diversas fuentes a un repositorio central.
+**ELT (Extract, Load, Transform):** Variante de ETL donde la transformación se realiza después de la carga en el destino.
+**Data Warehouse:** Almacén centralizado de datos para análisis y consulta institucional.
+**Pipeline:** Secuencia automatizada de tareas para procesar datos.
+**Script:** Archivo de código que ejecuta tareas específicas de procesamiento o validación.
+**API (Application Programming Interface):** Interfaz que permite la comunicación entre sistemas y la exposición de datos.
+**Bitácora:** Registro detallado de ejecuciones, incidencias y acciones tomadas.
+**Validación:** Proceso de verificación de calidad, formato y consistencia de los datos.
+**Depuración:** Corrección de errores, duplicados o inconsistencias en los datos.
+**Backup/Respaldo:** Copia de seguridad de datos para recuperación ante fallos.
+**Orquestación:** Coordinación y gestión de la ejecución de procesos automatizados.
+**Roles y Autenticación:** Mecanismos de control de acceso y seguridad en sistemas.
 ## 9. Checklist de Cumplimiento de Objetivos
 | Objetivo                                      | Cumplido |
 |-----------------------------------------------|:--------:|
