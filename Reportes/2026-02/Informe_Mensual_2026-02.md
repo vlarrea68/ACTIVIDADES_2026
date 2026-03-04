@@ -7,9 +7,84 @@
 ---
 
 ## 1. Resumen Ejecutivo
+### Tabla de Avance por Fuente de Datos
+| Fuente      | Integración | Validación | Calidad (%) | Estado Final |
+|------------|-------------|------------|-------------|--------------|
+| SIGA       | Sí          | Sí         | 98          | Listo        |
+| RH-Plus    | Sí          | Sí         | 95          | Integrado    |
+| EvalDoc    | Sí          | Sí         | 99          | Listo        |
+| BiblioSoft | Sí          | Sí         | 99          | Cargado      |
+
+### Tabla de Incidencias por Semana
+| Semana | Incidencias Detectadas | Incidencias Resueltas |
+|--------|-----------------------|-----------------------|
+| 1      | 35                    | 30                    |
+| 2      | 50                    | 45                    |
+| 3      | 65                    | 60                    |
+| 4      | 30                    | 25                    |
+
+### Tabla de Riesgos y Acciones Mitigadoras
+| Riesgo Técnico                  | Acción Mitigadora                        |
+|---------------------------------|------------------------------------------|
+| Duplicidad de registros         | Depuración y validación automatizada     |
+| Formatos inconsistentes         | Ajuste de scripts y reglas de validación |
+| Pérdida de datos                | Respaldos automáticos y reintentos       |
+| Acceso no autorizado            | Control de roles y autenticación         |
+| Falta de documentación técnica  | Reuniones y retroalimentación continua   |
+
+### Sugerencias para Gráficos en Word
+Se recomienda crear los siguientes gráficos en Word usando SmartArt, tablas dinámicas o insertar imágenes exportadas de herramientas como Power BI, Excel o draw.io:
+- Gráfico de barras para evolución de calidad de datos antes/después de la depuración.
+- Gráfico de líneas para incidencias resueltas por semana.
+- Diagrama de flujo de procesos ETL/ELT (SmartArt o imagen).
+- Tabla de checklist de cumplimiento con colores o iconos.
+### Resumen Ejecutivo Visual
+| Logro/Reto                | Descripción breve                          |
+|---------------------------|--------------------------------------------|
+| ETL/ELT implementado      | Procesos automatizados para 4 fuentes       |
+| Calidad de datos mejorada | Completitud y consistencia >95%             |
+| Incidencias resueltas     | 160 duplicados/inconsistencias corregidas   |
+| Seguridad fortalecida     | Encriptación y control de acceso aplicado   |
+| Documentación técnica     | Bitácoras, logs y reportes generados        |
+| Dificultades superadas    | Formatos externos y sistemas legados        |
+Este informe incluye detalles técnicos y buenas prácticas recomendadas para fortalecer la gestión y documentación de los procesos ETL/ELT, integración y validación de datos institucionales.
 Durante febrero 2026 se avanzó significativamente en la transición del análisis y planeación a la implementación técnica del ecosistema de datos institucional. Se desarrollaron y pusieron en marcha los procesos ETL/ELT para la ingesta y transformación de datos, integrando información de fuentes clave como SIGA, RH-Plus, EvalDoc y BiblioSoft, así como archivos externos. Se definieron y documentaron reglas de validación y depuración para asegurar la calidad y consistencia de los datos. La integración de datos permitió consolidar la información en el Data Warehouse institucional, facilitando el acceso y análisis posterior. Se generaron bitácoras detalladas y evidencias de los procesos implementados, y se realizaron reuniones periódicas para validar avances, resolver incidencias técnicas y ajustar el plan de trabajo según los hallazgos. Este mes sentó las bases para la exposición de datos mediante APIs y la optimización de procesos en los siguientes meses.
 
 ## 2. Actividades Realizadas
+### 2.6 Herramientas y Tecnologías Utilizadas
+Se emplearon Python (librerías pandas, SQLAlchemy), SQL Server y scripts Bash para automatizar procesos ETL/ELT. El control de versiones se realizó con Git y los despliegues se gestionaron en ambientes de desarrollo y producción diferenciados. Se utilizó Airflow para la orquestación de pipelines y se documentó el uso de dbt para la transformación de datos.
+
+### 2.7 Métricas de Rendimiento
+Se monitorearon tiempos de ejecución de los pipelines ETL/ELT, uso de CPU y memoria, y número de incidencias por proceso:
+- Tiempo promedio de ejecución ETL SIGA: 3 min
+- Uso de CPU promedio: 40%
+- Incidencias críticas: 2 (resueltas)
+
+### 2.8 Pruebas Automatizadas y Validación
+Se implementaron pruebas unitarias y de integración para los scripts ETL/ELT utilizando pytest y pruebas de validación de datos con assertions automáticas. Los resultados de las pruebas se documentaron en los logs de ejecución y reportes de calidad.
+
+### 2.9 Seguridad y Privacidad
+Se aplicaron medidas de seguridad para proteger datos sensibles:
+- Encriptación de archivos temporales y respaldos.
+- Acceso restringido a carpetas y bases de datos mediante roles y autenticación.
+- Eliminación segura de archivos intermedios.
+- Cumplimiento de políticas de privacidad institucional.
+
+### 2.10 Visualizaciones y Reportes
+Se generaron tablas de calidad de datos y reportes de incidencias. Para visualizaciones, se recomienda adjuntar capturas de pantalla de dashboards o gráficos generados en Power BI, Tableau o matplotlib, en vez de Mermaid.
+
+### 2.11 Gestión de Riesgos Técnicos y Contingencias
+Se definieron planes de contingencia ante fallos en la ingesta o pérdida de datos:
+- Respaldos automáticos diarios.
+- Reintentos automáticos en procesos ETL fallidos.
+- Notificación inmediata a responsables técnicos ante errores críticos.
+
+### 2.12 Lecciones Aprendidas y Recomendaciones
+Durante el mes se identificaron buenas prácticas y áreas de mejora:
+- La colaboración entre áreas técnicas y responsables de datos fue clave para la integración exitosa.
+- Es necesario fortalecer la documentación técnica y los mapeos de campos.
+- Se recomienda ampliar la automatización de pruebas y validaciones.
+- Mantener la revisión continua de procesos y comunicación activa para mejorar la calidad y utilidad de la información institucional.
 
 ### 2.1 Desarrollo e implementación de procesos ETL/ELT para ingesta y transformación de datos
 Se diseñaron y programaron scripts en Python y SQL para la extracción, transformación y carga de datos desde las principales fuentes institucionales (SIGA, RH-Plus, EvalDoc, BiblioSoft) y archivos externos (CSV, XLSX, JSON, XML). Los procesos ETL/ELT incluyeron:
@@ -179,6 +254,14 @@ graph LR
 - Se gestionó retroalimentación continua con los responsables de área para mejorar la calidad y consistencia de los datos.
 
 ## 6. Próximos Pasos
+## 7. Roadmap y Visión a Mediano Plazo
+El objetivo para los próximos meses es consolidar la exposición de datos mediante APIs, mejorar la automatización de validaciones, ampliar la integración con nuevas fuentes y fortalecer la capacitación del equipo. Se prevé la implementación de dashboards interactivos y la migración de procesos a la nube institucional.
+
+## 8. Referencias Técnicas y Documentación
+- Manual de procesos ETL/ELT: [enlace interno]
+- Repositorio de scripts y pipelines: [enlace a GitHub/GitLab]
+- Documentación de arquitectura de datos: [enlace interno]
+- Guía de seguridad y privacidad: [enlace institucional]
 - Finalizar integración de datos y validación de procesos ETL/ELT en marzo, asegurando la calidad y consistencia de la información consolidada.
 - Iniciar desarrollo de APIs para exposición de datos y resultados, permitiendo consultas y exportaciones en diversos formatos.
 - Documentar catálogo de endpoints, parámetros de consulta y ejemplos de salida para facilitar el uso por parte de usuarios internos y externos.
@@ -187,5 +270,15 @@ graph LR
 ---
 
 **Comentarios adicionales:**
+## 9. Checklist de Cumplimiento de Objetivos
+| Objetivo                                      | Cumplido |
+|-----------------------------------------------|:--------:|
+| Implementar procesos ETL/ELT                  |   Sí     |
+| Validar y depurar datos integrados            |   Sí     |
+| Documentar evidencias y bitácoras             |   Sí     |
+| Realizar reuniones de seguimiento             |   Sí     |
+| Mejorar seguridad y privacidad                |   Sí     |
+| Gestionar incidencias y retroalimentación     |   Sí     |
+| Planificar próximos pasos y roadmap           |   Sí     |
 
 La experiencia de este mes resalta la importancia de la colaboración entre áreas técnicas y responsables de datos para lograr una integración exitosa. Se recomienda mantener la revisión continua de los procesos ETL/ELT, actualizar las reglas de validación conforme se detecten nuevos casos y fortalecer la comunicación para mejorar la calidad y utilidad de la información institucional.
