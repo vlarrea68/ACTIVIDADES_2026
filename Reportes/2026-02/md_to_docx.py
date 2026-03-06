@@ -1,4 +1,3 @@
-doc.save(output_docx)
 
 import re
 from docx import Document
@@ -61,7 +60,7 @@ def md_to_docx(md_path, docx_path):
         else:
             doc.add_paragraph(line)
         i += 1
-        # doc.save(docx_path)  # This line has been removed
+        doc.save(docx_path)
     print(f"Documento Word generado en: {docx_path}")
 
 if __name__ == "__main__":
