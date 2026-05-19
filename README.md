@@ -21,7 +21,9 @@ Este repositorio centraliza la información, actividades, datos y entregables co
 
 ## Informes Mensuales
 
-Es obligatorio generar **informes mensuales** de las actividades realizadas. Estos informes deben documentar el avance, los logros, los retos y los acuerdos relevantes de cada mes. Se recomienda almacenar estos informes dentro de la carpeta `Entregables/` correspondiente a cada periodo, usando un formato de nombre como `Informe_Mensual_YYYY-MM.md`.
+Es obligatorio generar **informes mensuales** de las actividades realizadas. Estos informes deben documentar el avance, los logros, los retos y los acuerdos relevantes de cada mes. La ubicación recomendada para los informes mensuales generales es `Reportes/YYYY-MM/`, usando nombres como `Informe_Mensual_YYYY-MM.md`.
+
+Los entregables de soporte por periodo deben almacenarse dentro de la carpeta `Entregables/` correspondiente, separados por subcarpetas mensuales como `2026-04/`, `2026-05/` o `2026-06/`. Esta separación evita mezclar línea base, avances operativos y cierres trimestrales dentro de una misma carpeta.
 
 ## Estructura de Carpetas
 
@@ -48,12 +50,20 @@ El repositorio está organizado por períodos bimestrales para alinear el trabaj
 │   ├── Actividades/
 │   ├── Datos/
 │   ├── Entregables/
+│   │   ├── 2026-04/
+│   │   ├── 2026-05/
+│   │   └── Marco_Operativo_Contrato_Abr-Jun_2026.md
 │   └── Reuniones/
 ├── 05-Mayo-Junio/
 │   ├── Actividades/
 │   ├── Datos/
 │   ├── Entregables/
+│   │   └── 2026-06/
 │   └── Reuniones/
+├── Reportes/
+│   ├── 2026-04/
+│   ├── 2026-05/
+│   └── 2026-06/
 └── README.md
 ```
 
@@ -61,7 +71,7 @@ El repositorio está organizado por períodos bimestrales para alinear el trabaj
 
 *   **`Actividades/`**: Contiene documentos de trabajo, análisis, notas y cualquier archivo relacionado con la ejecución de las tareas del período.
 *   **`Datos/`**: Almacena los datos brutos, scripts (SQL, Python, etc.), y resultados de análisis.
-*   **`Entregables/`**: Guarda los borradores y versiones finales de los reportes, documentos de arquitectura, y otros entregables formales.
+*   **`Entregables/`**: Guarda los documentos de soporte, borradores y versiones finales de entregables formales del periodo. Cuando un periodo cubre más de un mes, se recomienda separarlos en subcarpetas mensuales.
 *   **`Reuniones/`**: Archiva las minutas, acuerdos y presentaciones de las reuniones de seguimiento de proyectos. Se recomienda nombrar los archivos con el formato `YYYY-MM-DD_Tema_de_la_Reunion.md`.
 
 ## Resumen de Actividades y Entregables
@@ -72,8 +82,17 @@ El repositorio está organizado por períodos bimestrales para alinear el trabaj
 |           | 2. Recomendar arquitectura de datos.                         | 2. (Documento) Propuesta de arquitectura de datos.        |
 | **Feb-Mar** | 3. Desarrollar procesos de ingesta y transformación (ETL/ELT). | 3. (Bitácora / Evidencia) Pipelines ETL/ELT implementados.|
 | **Mar-Abr** | 4. Desarrollar APIs de datos.                                | 4. (Documentación Técnica) Catálogo de APIs de datos.     |
-| **Abr-May** | 5. Analizar y optimizar rendimiento de bases de datos.       | 5. (Informe) Optimización de rendimiento.                 |
-| **May-Jun** | 6. Desarrollar e implementar monitoreo y alertamiento.       | 6. (Tablero / Reporte) Esquema de monitoreo.              |
-|           | 7. Elaborar datasets para uso con Inteligencia Artificial.   | 7. (Reporte) Preparación de datos para IA.                |
-|           | 8. Verificar y consolidar el cierre documental 2026.         |                                                           |
-| **Junio**   |                                                              | 8. (Memoria Documental) Expediente Anual.                 |
+| **Abr-Jun** | 5. Analizar y desarrollar el proceso completo del proyecto Vida Saludable. | 1. (Reporte con especificaciones) Desarrollo e implementación por etapas del proyecto Vida Saludable. |
+|           | 6. Analizar rendimiento de bases de datos y ejecutar optimizaciones con evidencia antes/después. | 2. (Informe mensual) Optimización de rendimiento con hallazgos, impacto y capacity planning. |
+|           | 7. Desarrollar y recomendar monitoreo y alertamiento para BD, APIs y pipelines. | 3. (Reporte mensual) Esquema de monitoreo y alertamiento con métricas, umbrales y evidencias. |
+|           | 8. Elaborar datasets para uso con Inteligencia Artificial y lineamientos básicos de calidad y gobernanza. | 4. (Reporte mensual) Preparación de datos para IA con curación, criterios de calidad y recomendaciones. |
+|           | 9. Desarrollar procesos de ingesta y transformación (ETL/ELT) para múltiples formatos. | 5. (Informe mensual) Procesos ETL/ELT con especificaciones, validaciones y depuración. |
+| **Junio**   | Continuidad operativa y cierre trimestral de evidencias.     | Corte trimestral al 30 de junio de 2026 para las cinco líneas de trabajo. |
+
+## Convención Actual de Organización
+
+- Los informes mensuales generales se resguardan en `Reportes/YYYY-MM/`.
+- Los entregables de soporte del periodo se resguardan en `Entregables/YYYY-MM/` dentro del bloque bimestral correspondiente.
+- Abril debe conservar la línea base técnica y documental.
+- Mayo debe concentrar evidencia operativa, validaciones y resultados del mes.
+- Junio debe concentrar cierre trimestral, comparativos y conclusiones finales.
