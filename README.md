@@ -18,6 +18,8 @@ Reportes/
 
 Este repositorio centraliza la información, actividades, datos y entregables correspondientes al plan de trabajo de la Coordinación de Proyectos de TI para el primer semestre de 2026. El objetivo es mantener un registro organizado para la generación de reportes de avance mensuales.
 
+Para reconstruir el flujo de generación de documentos y variantes Word en otra computadora, revisar también `GUIA_GENERACION_REPORTES_Y_DOCX.md` en la raíz del repositorio.
+
 
 ## Informes Mensuales
 
