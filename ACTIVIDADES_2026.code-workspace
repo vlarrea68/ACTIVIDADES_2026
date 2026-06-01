@@ -4,6 +4,9 @@
 			"path": "."
 		},
 		{
+			"path": "../SEP_MUSEMS_PU"
+		},
+		{
 			"path": "../py-sep-descarga-vida-saludable"
 		}
 	],
