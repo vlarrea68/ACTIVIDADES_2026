@@ -63,6 +63,10 @@ function Convert-MarkdownToTemporaryDocx {
     $index = 0
     $inList = $false
     $inCode = $false
+    $inMermaid = $false
+    $mermaidLines = @()
+    $mermaidIndex = 0
+    $tempImages = New-Object System.Collections.Generic.List[string]
 
     while ($index -lt $lines.Count) {
         $line = $lines[$index]
@@ -73,11 +77,38 @@ function Convert-MarkdownToTemporaryDocx {
                     $html.Add('</ul>')
                     $inList = $false
                 }
-                $html.Add('<pre>')
-                $inCode = $true
+                if ($line.Trim() -eq '```mermaid') {
+                    $inMermaid = $true
+                    $inCode = $true
+                    $mermaidLines = @()
+                } else {
+                    $html.Add('<pre>')
+                    $inCode = $true
+                }
             }
             else {
-                $html.Add('</pre>')
+                if ($inMermaid) {
+                    $mermaidContent = $mermaidLines -join "`n"
+                    $mermaidIndex++
+                    $imgName = "mermaid_temp_$([guid]::NewGuid().ToString()).png"
+                    $htmlDir = Split-Path -Parent $temporaryHtmlPath
+                    $imgPath = Join-Path $htmlDir $imgName
+                    try {
+                        [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
+                        $tempImg = Join-Path $env:TEMP "mermaid_temp_$([guid]::NewGuid().ToString()).png"
+                        Invoke-WebRequest -Uri 'https://kroki.io/mermaid/png' -Method Post -Body $mermaidContent -ContentType 'text/plain' -OutFile $tempImg -UseBasicParsing
+                        $b64 = [Convert]::ToBase64String([System.IO.File]::ReadAllBytes($tempImg))
+                        $html.Add("<img src=""data:image/png;base64,$b64"" style=""max-width: 100%; height: auto;"" />")
+                        Remove-Item $tempImg -Force
+                    } catch {
+                        $html.Add('<pre>')
+                        $html.Add((Convert-ToHtmlSafe -Text $mermaidContent))
+                        $html.Add('</pre>')
+                    }
+                    $inMermaid = $false
+                } else {
+                    $html.Add('</pre>')
+                }
                 $inCode = $false
             }
             $index++
@@ -85,7 +116,11 @@ function Convert-MarkdownToTemporaryDocx {
         }
 
         if ($inCode) {
-            $html.Add((Convert-ToHtmlSafe -Text $line))
+            if ($inMermaid) {
+                $mermaidLines += $line
+            } else {
+                $html.Add((Convert-ToHtmlSafe -Text $line))
+            }
             $index++
             continue
         }
@@ -206,6 +241,11 @@ function Convert-MarkdownToTemporaryDocx {
         $word.Quit()
         if (Test-Path $temporaryHtmlPath) {
             Remove-Item $temporaryHtmlPath -Force
+        }
+        foreach ($img in $tempImages) {
+            if (Test-Path $img) {
+                Remove-Item $img -Force
+            }
         }
     }
 }
