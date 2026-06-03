@@ -10,5 +10,7 @@
 			"path": "../py-sep-descarga-vida-saludable"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"powershell.cwd": "ACTIVIDADES_2026"
+	}
 }
