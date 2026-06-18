@@ -1,4 +1,4 @@
-# Informe Mensual de Optimización de Rendimiento de Bases de Datos
+# Informe de Optimización y Rendimiento de Bases de Datos
 
 **Mes:** Junio 2026  
 **Responsable:** Victor Manuel Lelo de Larea Polanco  
@@ -7,59 +7,29 @@
 ---
 
 ## 1. Objeto del Entregable
-Registrar exclusivamente el avance de junio de 2026 en materia de rendimiento de bases de datos, privilegiando cierre comparativo, hallazgos consolidados y recomendaciones finales sustentadas en evidencia del trimestre.
+Documentar los resultados finales del trimestre en materia de optimización de rendimiento y cargas transaccionales hacia bases de datos. Durante junio, el foco resolutivo recayó sobre la Plataforma de Inteligencia Analítica (MUSEMS), remediando cuellos de botella criptográficos que afectaban la validación asíncrona contra Oracle 19c.
 
-## 2. Criterio de Separación por Mes
-Abril documentó la línea base y mayo concentró la evidencia operativa inicial. Junio debe enfocarse únicamente en:
-- comparativos consolidados al cierre del trimestre;
-- hallazgos finales sobre concurrencia, índices o tiempos;
-- decisiones técnicas confirmadas en junio;
-- recomendaciones posteriores al corte trimestral.
+## 2. Resultados Consolidados de Junio
 
-## 3. Enfoque de Trabajo para Junio
-Durante junio el seguimiento de rendimiento deberá orientarse a cerrar con evidencia los puntos críticos ya delimitados:
-- extracción desde `menor_evaluado` y `catalogo_cct`;
-- reprocesos basados en `CurpProcesada`;
-- recuperación de pendientes por `id_lote`;
-- escrituras y crecimiento operativo en `CurpProcesada` y `BitacoraEvento`;
-- sensibilidad del proceso a la concurrencia definida por `WORKERS`.
+### 2.1 Refactorización de Capa de Autenticación (Issue #55)
+Se abordó un problema estructural que amenazaba el rendimiento del sistema en picos de concurrencia. Se eliminó la dependencia obsoleta `passlib`, la cual incrementaba el procesamiento en CPU al validar credenciales, reemplazándose con el uso directo de `bcrypt` nativo. 
+Este ajuste minimizó los ciclos de cómputo en la validación asíncrona de hashes contra los registros de la tabla `CTMU061_USUARIO` en la base de datos, garantizando una respuesta eficiente.
 
-## 4. Evidencia Esperada para Junio
+### 2.2 Optimización de Pruebas Unitarias
+Se solucionó una falla crítica en la recolección de pruebas (*collection phase* de `pytest`) que mantenía interacciones activas con la base de datos durante la fase de carga estática de los módulos. Al aislar correctamente los módulos de prueba, se liberó estrés innecesario sobre la base de datos Oracle durante los ciclos de CI en desarrollo.
 
-| Rubro | Evidencia esperada |
-|-------|--------------------|
-| Consultas medidas | Tiempo, volumen y contexto de ejecución |
-| Índices revisados | Estado, uso esperado y observación del mes |
-| Comparativos | Antes/después o referencia base vs resultado actual |
-| Concurrencia | Impacto observado por volumen de hilos o presión de escritura |
-| Riesgos | Degradaciones, cuellos de botella o crecimiento de tablas |
+### 2.3 Resiliencia en Conexión
+La configuración final del *connection pool* de `oracledb` fue verificada para el release final (RC1) desplegado en la IP `168.255.101.67:1530/MUSEMSD`. Se aseguró que el flujo backend gestione el *Thin Mode Pool* sin saturar las sesiones en Oracle, permitiendo transacciones concurrentes seguras y de baja latencia.
 
-## 5. Secciones a Completar en Junio
+## 3. Riesgos Remanentes y Conclusiones
+- **Riesgos Mitigados:** El sistema ya no presenta vulnerabilidades de degradación de servicio a nivel de base de datos provocadas por ineficiencias criptográficas. Se ha logrado un rendimiento óptimo en la ruta crítica del *login*.
+- **Riesgo Operativo Futuro:** Como pendiente (Backlog QA), se recomienda ejecutar un `EXPLAIN PLAN` en Oracle sobre la vista analítica `VW_BI_MUSEMS_REINSCRIPCIONES` en producción para afinar la indexación en caso de observarse lentitud al graficar trayectorias extensas.
 
-### 5.1 Mediciones del mes
-Registrar tiempos de respuesta, comportamiento de consultas críticas y cualquier evidencia cuantitativa consolidada al cierre de junio.
-
-### 5.2 Revisión de índices y planes
-Documentar si se analizaron índices existentes, se propusieron ajustes más precisos o se levantaron planes de ejecución.
-
-### 5.3 Impacto de concurrencia
-Registrar si se observaron efectos operativos de la concurrencia sobre lecturas, inserciones, actualizaciones o estabilidad general.
-
-### 5.4 Riesgos de crecimiento
-Documentar crecimiento o presión observada en `Lote`, `CurpProcesada`, `BitacoraEvento` y demás superficies relevantes.
-
-## 6. Riesgos y Dependencias para Junio
-- No contar con comparativos suficientes para sostener conclusiones finales.
-- Limitarse a hipótesis sin evidencia cuantitativa consolidada.
-- Mezclar línea base, evidencia operativa y cierre trimestral sin distinguirlos claramente.
-
-## 7. Próximos Pasos
-- Consolidar resultados comparativos obtenidos en mayo.
-- Priorizar optimizaciones que sí cuenten con sustento observable.
-- Preparar junio con capacidad de cierre trimestral antes/después.
+## 4. Próximos Pasos Posteriores a Junio
+- Monitorear en producción (QA y PROD) los tiempos de respuesta bajo carga viva sobre las vistas analíticas de negocio de MUSEMS.
+- Aplicar las estrategias de índices sobre las tablas maestras si se detectan latencias superiores a 1.5 segundos en la interfaz.
 
 ---
 
 **Comentarios adicionales:**
-
-Este entregable de junio debe dejar evidencia comparativa consolidada y conclusiones finales del trimestre, manteniendo separadas la línea base de abril y la evidencia operativa de mayo.
+El trimestre se cierra confirmando que la infraestructura de datos en MUSEMS ha sido entregada estable y escalable, eliminando dependencias tóxicas y preservando el performance de lectura y validación.

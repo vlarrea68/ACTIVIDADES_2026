@@ -1,16 +1,14 @@
 {
-	"folders": [
-		{
-			"path": "."
-		},
-		{
-			"path": "../SEP_MUSEMS_PU"
-		},
-		{
-			"path": "../py-sep-descarga-vida-saludable"
-		}
-	],
-	"settings": {
-		"powershell.cwd": "ACTIVIDADES_2026"
-	}
+  "folders": [
+    {
+      "path": ".",
+    },
+    {
+      "path": "../py-sep-descarga-vida-saludable",
+    },
+    {
+      "path": "../SEP_MUSEMS_PU",
+    },
+  ],
+  "settings": {},
 }

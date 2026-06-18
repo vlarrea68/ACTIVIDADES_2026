@@ -7,60 +7,29 @@
 ---
 
 ## 1. Objeto del Entregable
-Registrar el avance exclusivo de junio de 2026 sobre monitoreo y alertamiento, privilegiando cierre de métricas, incidencias consolidadas, ajustes finales de umbrales y conclusiones de observabilidad del trimestre.
+Documentar los controles de monitoreo preventivo, volumétrico y alertamiento consolidados al cierre del trimestre. Durante el mes de junio, la prioridad se centró en la seguridad perimetral a nivel aplicativo de la plataforma MUSEMS (Issue #56), previniendo ataques de denegación de servicio e inundación.
 
-## 2. Criterio de Separación por Mes
-Abril definió el esquema base de observabilidad y mayo concentró pruebas y evidencia inicial. Junio debe registrar únicamente:
-- resultados consolidados de observabilidad;
-- umbrales confirmados o ajustados al cierre;
-- incidentes relevantes del cierre trimestral;
-- conclusiones sobre suficiencia o limitaciones del esquema.
+## 2. Resultados Consolidados de Junio
 
-## 3. Enfoque de Trabajo para Junio
-El seguimiento del mes debe concentrarse en consolidar si las superficies de observabilidad definidas en abril y trabajadas en mayo resultaron suficientes y útiles al cierre trimestral:
-- logs estructurados;
-- lotes en ejecución;
-- resultados por CURP;
-- bitácora de eventos;
-- salidas físicas de PDFs;
-- reprocesos y reanudaciones.
+### 2.1 Implementación de Monitoreo Volumétrico (Rate Limiting)
+Para resolver la ausencia de controles en la concurrencia de acceso y autenticación, se instrumentó exitosamente la librería `slowapi` en la capa de FastAPI del proyecto MUSEMS. Este componente actúa como un monitor activo que evalúa en tiempo real las ráfagas provenientes de una misma dirección IP origen.
 
-## 4. Evidencia Esperada para Junio
+### 2.2 Configuración de Umbrales
+- Se definió un umbral estricto de **5 peticiones por minuto** (`5/minute`) exclusivamente sobre endpoints críticos de negocio: `/login`, `/forgot-password` y `/reset-password`.
+- Los flujos analíticos internos operan sin restricciones de umbral, salvaguardando la operatividad general post-inicio de sesión.
 
-| Rubro | Evidencia esperada |
-|-------|--------------------|
-| Métricas capturadas | Tiempo por lote, fallos, reintentos, PDFs, lotes abiertos |
-| Umbrales contrastados | Casos donde el umbral sirvió o no sirvió |
-| Incidencias | Eventos preventivos o críticos observados |
-| Atención | Acción realizada, resultado y seguimiento |
-| Pruebas | Ejercicios controlados o validaciones del esquema |
+### 2.3 Evidencia y Resultados del Monitoreo
+Durante las pruebas de validación, la herramienta demostró bloquear conexiones abusivas, devolviendo exitosamente el código HTTP de alertamiento `429 Too Many Requests` de manera estandarizada y absteniéndose de invocar la carga en la base de datos Oracle, lo cual preservó de facto la resiliencia operativa de la infraestructura backend.
 
-## 5. Secciones a Completar en Junio
+## 3. Manejo de Excepciones y Riesgos
+- **Riesgo por Proxies/NAT:** Se identificó la posibilidad técnica de falsos positivos en redes con NAT estricto (uso compartido de IP pública). Para mitigarlo, la arquitectura depende de la lectura correcta de la cabecera `X-Forwarded-For` o de `ProxyFix` a nivel de despliegue productivo.
+- **Testing Continuo:** Para no interrumpir los procesos de monitoreo E2E (Smoke Tests con Playwright), se instrumentó a nivel de pipeline una correcta tolerancia a este Rate Limiting asegurando que los bots de test no se automarginen del sistema.
 
-### 5.1 Métricas del mes
-Registrar las métricas efectivamente consolidadas al cierre de junio y su fuente de obtención.
-
-### 5.2 Incidencias y alertas observadas
-Registrar eventos relevantes del mes, diferenciando informativos, preventivos y críticos.
-
-### 5.3 Validación de umbrales
-Documentar si los umbrales iniciales definidos en abril funcionaron, requieren ajuste o siguen sin evidencia suficiente.
-
-### 5.4 Procedimientos de atención aplicados
-Registrar si hubo reproceso, reanudación, revisión manual, confirmación en BD o contrastes contra archivos físicos.
-
-## 6. Riesgos y Dependencias para Junio
-- No contar con evidencia suficiente para sostener conclusiones de cierre.
-- Mantener métricas definidas pero todavía no aprovechables para decisión operativa.
-- Mezclar definiciones de abril, pruebas de mayo y conclusiones de junio sin separación clara.
-
-## 7. Próximos Pasos
-- Consolidar evidencia final de observabilidad y atención de incidentes.
-- Ajustar recomendaciones finales sobre métricas y umbrales.
-- Preparar cierre trimestral con trazabilidad clara entre evento, alerta, respuesta y conclusión.
+## 4. Próximos Pasos Posteriores al Trimestre
+- Analizar los registros (logs) de producción para dimensionar la incidencia de alertas tipo `429` generadas por uso real.
+- Validar con el área de operaciones si es requerido conectar este limitador a un almacén de caché distribuido (como Redis) en futuros rediseños o escalados de instancias (pods).
 
 ---
 
 **Comentarios adicionales:**
-
-Este documento de junio debe expresar conclusiones y evidencia consolidada del trimestre, evitando repetir definiciones generales de abril o el detalle operativo de mayo salvo como referencia puntual.
+Con las acciones efectuadas en junio, la organización cierra el trimestre con una madurez sustancial en la detección temprana y mitigación activa de ráfagas anómalas (observabilidad volumétrica), mitigando amenazas del Top 10 de OWASP.

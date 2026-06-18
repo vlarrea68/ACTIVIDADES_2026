@@ -1,4 +1,4 @@
-# Informe Mensual de Procesos de Ingesta y Transformación (ETL/ELT)
+# Informe Mensual de Procesos ETL/ELT e Integración Continua
 
 **Mes:** Junio 2026  
 **Responsable:** Victor Manuel Lelo de Larea Polanco  
@@ -7,59 +7,32 @@
 ---
 
 ## 1. Objeto del Entregable
-Registrar el avance exclusivo de junio de 2026 sobre procesos de ingesta y transformación (ETL/ELT), priorizando consolidación de validaciones, hallazgos finales, tratamiento de errores y conclusiones del trimestre.
+Documentar los procesos de Integración y Transformación, entendidos en este cierre de trimestre bajo el espectro extendido de DevSecOps para la gestión y despliegue del código y dependencias. Se certifica la automatización que funge como filtro transaccional (ETL de código fuente) previo a la integración en la rama principal.
 
-## 2. Criterio de Separación por Mes
-Abril dejó delimitado el flujo ETL/ELT observable y mayo concentró pruebas o validaciones iniciales. Junio debe registrar únicamente:
-- validaciones consolidadas al cierre trimestral;
-- transformaciones operativas confirmadas durante el trimestre;
-- evidencia final sobre insumos controlados procesados;
-- incidencias, depuración o ajustes cerrados o pendientes al cierre de junio.
+## 2. Resultados Consolidados de Junio (DevSecOps)
 
-## 3. Enfoque de Trabajo para Junio
-Durante junio esta línea deberá centrarse en consolidar evidencia sobre:
-- el flujo real basado en PostgreSQL, servicio IMSS, tablas operativas y PDFs;
-- pruebas controladas de reglas de validación;
-- depuración estructural u operativa;
-- mapeos entre origen, transformación y destino;
-- delimitación más concreta de formatos CSV, XLSX, JSON y XML cuando aplique.
+### 2.1 Orquestación del Pipeline de Seguridad (Issue #57)
+Para fortalecer la ingesta y extracción segura de artefactos en los repositorios institucionales, se diseñó e integró un *Workflow* automatizado apoyado en GitHub Actions (`.github/workflows/security-ci.yml`). Esta línea de ensamblaje actúa sobre todo intento de *Pull Request*, analizando estática y composicionalmente el código antes de autorizar su consolidación.
 
-## 4. Evidencia Esperada para Junio
+### 2.2 Transformación y Curación de Código (SAST y SCA)
+Se incorporaron las siguientes herramientas de análisis para extraer anomalías (bugs, vulnerabilidades) desde el repositorio:
+- **SAST (Análisis Estático):** Integración de motores `bandit` (para vulnerabilidades específicas de Python) y `semgrep` (motor multi-lenguaje) configurados para escanear en paralelo.
+- **SCA (Análisis de Composición):** Se adoptaron escáneres dependientes `pip-audit` y `npm audit` para extraer manifiestos (`requirements.txt`, `package.json`) y validarlos contra bases de datos públicas de CVEs.
 
-| Rubro | Evidencia esperada |
-|-------|--------------------|
-| Flujo validado | Etapas del pipeline efectivamente revisadas o probadas |
-| Insumos controlados | Datos, formatos o cortes utilizados en mayo |
-| Transformaciones | Reglas aplicadas y resultado esperado |
-| Validaciones | Controles de estructura, integridad o consistencia |
-| Depuración | Errores detectados, separación de fallos y tratamiento aplicado |
+### 2.3 Políticas de Ingesta (Branch Protection)
+El pipeline impuso como regla inquebrantable que el descubrimiento de vulnerabilidades *Críticas* o de severidad *Alta* retorne de inmediato un código `exit 1`. Esta señal interactúa nativamente con las protecciones de GitHub para impedir la mezcla (Merge) de código degradado, logrando un control de calidad "Shift-Left".
 
-## 5. Secciones a Completar en Junio
+## 3. Riesgos, Mitigaciones y Excepciones
+- **Riesgo:** Posible fatiga por falsos positivos o bloqueos de rutinas propias del equipo (ej. librerías de test o sintaxis ambigua capturada por semgrep).
+- **Mitigaciones Adoptadas:** 
+  - Se instruyó el uso de `--production` o `--omit=dev` para `npm audit`.
+  - Se recomendó mantener actualizado un archivo `.semgrepignore` para establecer exclusiones controladas y permitir el flujo sano de las liberaciones urgentes sin romper la directriz normativa de la plataforma.
 
-### 5.1 Flujo observado o probado en mayo
-Registrar qué partes del pipeline real quedaron ejecutadas, validadas o contrastadas al cierre de junio.
-
-### 5.2 Validaciones del mes
-Registrar validaciones aplicadas sobre extracción, transformación, carga y consistencia de resultados.
-
-### 5.3 Depuración e incidencias
-Documentar fallos de estructura, datos, integración externa o persistencia observados en mayo.
-
-### 5.4 Formatos y alcance contractual
-Precisar si durante junio hubo evidencia adicional para CSV, XLSX, JSON o XML, diferenciando lo realmente probado de lo que sigue como especificación.
-
-## 6. Riesgos y Dependencias para Junio
-- Continuar describiendo la línea ETL/ELT sin evidencia de cierre.
-- Mezclar el flujo real observado con formatos aún no implementados.
-- No diferenciar línea base, prueba intermedia y cierre trimestral.
-
-## 7. Próximos Pasos
-- Consolidar evidencia ETL/ELT efectivamente generada durante el trimestre.
-- Aterrizar mejor la separación entre flujo productivo y especificación contractual.
-- Preparar conclusiones y recomendaciones posteriores al corte de junio.
+## 4. Próximos Pasos (Posteriores a Junio)
+- Iniciar la ejecución productiva del pipeline en la rama *main* e instruir a los equipos de desarrollo sobre el proceso de corrección temprana de bloqueos mediante la lectura de *logs*.
+- Extender en un futuro estas validaciones estructurales al contenedor Docker construido (*Container Scanning*) antes del despliegue físico.
 
 ---
 
 **Comentarios adicionales:**
-
-Este entregable de junio debe documentar cierre y evidencia consolidada del trimestre, evitando repetir la explicación estructural de abril o el detalle operativo de mayo excepto cuando sea indispensable para contextualizar una conclusión final.
+Se cierra el mes de junio completando la matriz de requerimientos operativos, transicionando de una metodología de inspección humana propensa a fallos a una ingesta de código blindada y automatizada.
