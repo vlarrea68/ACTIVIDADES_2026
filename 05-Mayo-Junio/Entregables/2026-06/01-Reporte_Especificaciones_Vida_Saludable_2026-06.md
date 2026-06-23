@@ -103,3 +103,9 @@ Como cierre de este reporte, se certifica que se transfiere íntegramente a la d
 4. **Histórico y Matrices Institucionales:** Se anexan el *Inventario Técnico del Repositorio* (2026-04-17), *Bitácora del Proyecto* y *Checklist de Auditoría* validando el apego gubernamental normativo.
 
 Con esta declaratoria final, se hace oficial la conclusión operativa y el traspaso exitoso de responsabilidades sobre el ecosistema Vida Saludable (Fase 2).
+
+## Actualización Especial de Cierre (Junio 2026)
+
+### 3.1 Blindaje de Criptografía e Inyecciones SQL (Vida Saludable)
+- **Mitigación Issue 60 (Transición AES-256-GCM):** Se descubrió que la interacción histórica con los Web Services del IMSS utilizaba un estándar inseguro (AES-ECB) propenso a análisis criptográfico de patrones. En junio, se finalizó la migración hacia AES-256 en modo GCM (Galois/Counter Mode), proveyendo adicionalmente validación de integridad para prevenir manipulación del *token* en tránsito.
+- **Remediación Issue 61 (SQL Injection Zero-Tolerance):** Se erradicó por completo la construcción dinámica de filtros (f-strings) en la capa de persistencia `pg8000`, parametrizando todas y cada una de las *queries*, blindando la lectura de la tabla `menor_evaluado` y del historial de lotes contra intentos de inyección estructurada.

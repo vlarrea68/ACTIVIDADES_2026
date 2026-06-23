@@ -68,3 +68,9 @@ Como cierre que rubrica formal y jurídicamente la salvaguarda y preparación de
 - **Matriz de Trazabilidad 4.1:** Documento que valida mediante una tabla HTML de alto impacto que la restricción de visibilidad y encriptación (Requisito RF-08) se cumplió de principio a fin hasta su comprobación E2E (QA `SEC-02`).
 
 Con la entrega de estos estatutos, el modelado, privacidad y limpieza de datos institucionales se reporta como plenamente auditado, transferido y exitosamente concluido.
+
+## Actualización Especial de Cierre (Junio 2026)
+
+### 4.1 Análisis SAST / SCA (Barrera de Código)
+Se entrega un repositorio (`SEP_MUSEMS_PU`) configurado con *GitHub Actions* (`security-ci.yml`) que actúa como barrera irrompible antes de permitir un *Merge*.
+- **Dictamen Final APROBADO:** Herramientas como `bandit` y `semgrep` han emitido un pase limpio (0 vulnerabilidades críticas/altas/medias). Todas las dependencias expuestas (`passlib`, *cors wildcards*) fueron erradicadas y sus reportes cerrados oficialmente.

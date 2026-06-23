@@ -81,3 +81,14 @@ Como cierre que rubrica el cumplimiento del requerimiento CMMI en la materia de 
 - **Código Fuente E2E de Cypress (Vida Saludable):** Casos automatizados en la carpeta `src/frontend/cypress/e2e/imss-integration.cy.ts`, certificando el *Retry-Logic* y *Circuit Breakers* frente al IMSS.
 
 La vertiente de monitoreo, defensa volumétrica y contención queda operativamente asegurada, auditada y finiquitada.
+
+## Actualización Especial de Cierre (Junio 2026)
+
+## 5. Resumen de Despliegue Oficial en Ambiente QA
+
+El sistema MUSEMS se entrega funcional, aprovisionado y certificado por las pruebas *End-to-End* en el clúster de Aseguramiento de la Calidad (QA) de la SEP.
+- **Endpoint del Servidor Web:** `http://168.255.101.231:8086/`
+- **Nodos de Base de Datos:** `168.255.101.67:1530/MUSEMSD` (Esquema: `MUSEMSQA`)
+- **Usuarios Creados e Intransferibles:** 5 perfiles con rol de `ADMINISTRADOR` (`david`, `abraham`, `valeria`, `dolores`, `eduardo`) probados y asegurados con la contraseña maestra `musems2026`. Estos usuarios están blindados bajo la lógica de retención obligatoria (Lockout Prevention) para asegurar continuidad administrativa.
+
+---
