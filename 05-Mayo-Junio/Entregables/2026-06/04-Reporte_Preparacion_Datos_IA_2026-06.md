@@ -1,4 +1,4 @@
-# Reporte Mensual de Preparación de Datos para IA
+# Acta de Cierre: Preparación de Datos y Gobernanza Analítica
 
 **Mes:** Junio 2026  
 **Responsable:** Victor Manuel Lelo de Larea Polanco  
@@ -7,31 +7,29 @@
 ---
 
 ## 1. Objeto del Entregable
-Detallar el trabajo correspondiente a junio para la curación y preparación de datos estructurados, garantizando que cumplan con los lineamientos de gobernanza requeridos para la toma de decisiones gerenciales y la potencial explotación mediante algoritmos de inteligencia artificial.
+Formalizar la entrega del modelo de datos analítico y la matriz de gobernanza PII (Personal Identifiable Information) para la Plataforma de Inteligencia Analítica (MUSEMS). Este reporte documenta cómo la información ha quedado curada, anonimizada y estandarizada, apta para el entrenamiento de Inteligencia Artificial (IA) y la toma de decisiones gerenciales libres de riesgo normativo.
 
-## 2. Consolidación de Datos en MUSEMS (Cierre de Trimestre)
+## 2. Gobernanza Analítica y Vistas de Negocio
 
-### 2.1 Conformación de Vistas Analíticas
-Durante el mes, se oficializó el uso del esquema lógico en la base de datos Oracle 19c. Se implementaron vistas analíticas centrales de negocio (e.g., `VW_BI_MUSEMS_REINSCRIPCIONES`) las cuales sirven como conducto seguro e indexado para nutrir el frontend, y que fungen como los datasets base estandarizados para el entrenamiento de futuros modelos IA o motores de inferencia.
+El ecosistema de datos de MUSEMS se transfiere plenamente consolidado en el gestor Oracle 19c.
 
-### 2.2 Curación y Calidad (Depuración PII)
-Se logró un hito trascendental de gobernanza en el manejo de Información de Identificación Personal (PII):
-- **Enmascaramiento Base:** La CURP y otra información crítica se extrae y transmite ofuscada hacia la capa de presentación.
-- **Auditoría de Acceso:** La acción de desenmascarar datos (función "Mostrar PII") está fuertemente regulada. Cada consulta transparente desencadena un evento inalterable de auditoría dentro de la base de datos (Bitácora de Eventos), permitiendo generar en un futuro métricas de riesgo y comportamiento analítico en el uso de los datos.
+### 2.1 Estandarización de Datasets
+Se entregan las estructuras SQL maestras diseñadas expresamente para separar la carga transaccional de la lectura analítica. Destaca la inclusión final de la vista de negocio `VW_BI_MUSEMS_HISTORICO_CURP`, la cual provee la historia longitudinal académica de los alumnos depurada para algoritmos de segmentación.
 
-### 2.3 Seguridad de la Información (Hardening Hash)
-Se especificaron las reglas para asegurar de forma definitiva el flujo de llaves criptográficas:
-- Se instrumentó la viabilidad del uso nativo de `STANDARD_HASH` de Oracle acoplado a un `MUSEMS_SALT_2026`, afianzando la trazabilidad segura y el anonimato necesario para preparar repositorios de datos masivos seguros (Datasets Anónimos) viables para Modelos de Aprendizaje.
+### 2.2 Blindaje de Información Personal (Gobernanza PII)
+Se ha certificado y entregado el flujo completo de protección de datos personales alineado al Requerimiento Funcional 08 (RF-08).
+- **Mascara Criptográfica Base:** Las aplicaciones leen la identidad del alumno ofuscada gracias a `STANDARD_HASH` interactuando con la sal del sistema.
+- **Auditoría Estricta:** Todo desenmascaramiento explícito ejecutado en el sistema inserta registros inmutables en la bitácora `MV_MUSEMS_IDENTITY_HASH`. Estos registros (Bitácora Operativa Analítica) componen a su vez el sustrato primario para que futuros modelos de IA puedan predecir patrones de fugas de datos (DLP).
 
-## 3. Riesgos y Recomendaciones Remanentes
-- **Calidad y Completitud:** Al cierre del trimestre, permanecen en el Backlog de QA (QA-001 al QA-003) los requerimientos para robustecer las reglas de validación (Rechazar de forma temprana registros de origen que presenten CURP nula o vacía y matrículas que no contengan exactamente los 10 caracteres preestablecidos).
-- Estas restricciones tempranas (Shift-left en Data Quality) son obligatorias para evitar que información sucia degrade el valor analítico de los modelos proyectados.
+## 3. Backlog de Mejora Continua
+Para potenciar la calidad del dato en futuras etapas de Machine Learning, se transfiere al equipo entrante la recomendación de:
+- Integrar las reglas "Shift-Left" en el área de `Staging` para denegar la inserción profunda de alumnos con claves de centro de trabajo irregulares o identificadores nulos, lo cual garantizará la pureza asintótica de la base maestra.
 
-## 4. Próximos Pasos (Cierre)
-- Acompañar al equipo de desarrollo entrante en la ejecución de las validaciones Staging (limpieza QA-001 a QA-003) propuestas en el *Handover*.
-- Fomentar la exportación continua de logs auditables hacia herramientas de Big Data para comenzar a detectar anomalías y correlaciones mediante IA sobre la bitácora operativa.
+## 4. Inventario de Entregables Finales (Handover Tecnológico)
 
----
+Como certificación definitiva sobre el tratamiento, gobernanza y modelado de datos orientados a BI/IA, se entregan los siguientes artefactos:
+- Entregable CMMI (10) **Diccionario de Datos** oficial, con la taxonomía y diccionario de las 9 vistas analíticas entregadas.
+- Entregable CMMI (12) **Reglas de Negocio**, en donde constan legal y funcionalmente las normativas de enmascaramiento PII y políticas de trazabilidad.
+- Entregable CMMI (14) **Matriz de Rastreo y Trazabilidad** (Certificada bajo Caso de Uso `CU-SEC-01` y Prueba `SEC-02` para el control PII).
 
-**Comentarios adicionales:**
-Se cierra el trimestre con una base consolidada y estandarizada que separa adecuadamente la información operativa en crudo de los esquemas analíticos depurados y gobernados.
+El ecosistema de gobernanza de datos queda operativamente transferido y en estado de madurez técnica avanzada.

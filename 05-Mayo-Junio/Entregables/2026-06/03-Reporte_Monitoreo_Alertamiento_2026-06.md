@@ -1,4 +1,4 @@
-# Reporte Mensual de Monitoreo y Alertamiento
+# Acta de Cierre: Monitoreo Perimetral y Alertamiento
 
 **Mes:** Junio 2026  
 **Responsable:** Victor Manuel Lelo de Larea Polanco  
@@ -7,29 +7,27 @@
 ---
 
 ## 1. Objeto del Entregable
-Documentar los controles de monitoreo preventivo, volumétrico y alertamiento consolidados al cierre del trimestre. Durante el mes de junio, la prioridad se centró en la seguridad perimetral a nivel aplicativo de la plataforma MUSEMS (Issue #56), previniendo ataques de denegación de servicio e inundación.
+Acreditar la transferencia operativa de los controles de seguridad perimetral, volumetría y alertamiento integrados en la arquitectura backend de la plataforma MUSEMS (Release Candidate 1). Este reporte funciona como acta de conclusión demostrando la protección automatizada activa contra patrones de abuso e inundación (DDoS / Fuerza Bruta).
 
-## 2. Resultados Consolidados de Junio
+## 2. Consolidación de Controles Volumétricos (Rate Limiting)
 
-### 2.1 Implementación de Monitoreo Volumétrico (Rate Limiting)
-Para resolver la ausencia de controles en la concurrencia de acceso y autenticación, se instrumentó exitosamente la librería `slowapi` en la capa de FastAPI del proyecto MUSEMS. Este componente actúa como un monitor activo que evalúa en tiempo real las ráfagas provenientes de una misma dirección IP origen.
+La arquitectura se entrega blindada mediante la orquestación del middleware de observabilidad volumétrica apoyado en `slowapi`.
 
-### 2.2 Configuración de Umbrales
-- Se definió un umbral estricto de **5 peticiones por minuto** (`5/minute`) exclusivamente sobre endpoints críticos de negocio: `/login`, `/forgot-password` y `/reset-password`.
-- Los flujos analíticos internos operan sin restricciones de umbral, salvaguardando la operatividad general post-inicio de sesión.
+### 2.1 Umbrales Entregados en el Entorno QA
+Se transfiere el control de los límites volumétricos configurados bajo la premisa de "Falla Segura" (Fail-Safe):
+- Los endpoints transaccionales públicos (como `/login`, `/forgot-password`) están estrictamente acotados a un máximo de **5 peticiones por minuto** por cada dirección IP de origen.
+- Toda superación de este umbral genera automáticamente una excepción de red `429 Too Many Requests`, interceptando la ráfaga a nivel de aplicación (FastAPI) y protegiendo el procesador de base de datos Oracle contra la inanición de conexiones.
 
-### 2.3 Evidencia y Resultados del Monitoreo
-Durante las pruebas de validación, la herramienta demostró bloquear conexiones abusivas, devolviendo exitosamente el código HTTP de alertamiento `429 Too Many Requests` de manera estandarizada y absteniéndose de invocar la carga en la base de datos Oracle, lo cual preservó de facto la resiliencia operativa de la infraestructura backend.
+### 2.2 Trazabilidad de Auditoría
+El control y la alerta de denegación por abuso han sido cubiertos y certificados bajo casos de prueba rigurosos, verificables en la **Matriz de Rastreo y Trazabilidad** transferida al área de operaciones.
 
-## 3. Manejo de Excepciones y Riesgos
-- **Riesgo por Proxies/NAT:** Se identificó la posibilidad técnica de falsos positivos en redes con NAT estricto (uso compartido de IP pública). Para mitigarlo, la arquitectura depende de la lectura correcta de la cabecera `X-Forwarded-For` o de `ProxyFix` a nivel de despliegue productivo.
-- **Testing Continuo:** Para no interrumpir los procesos de monitoreo E2E (Smoke Tests con Playwright), se instrumentó a nivel de pipeline una correcta tolerancia a este Rate Limiting asegurando que los bots de test no se automarginen del sistema.
+## 3. Consideraciones para el Soporte Continuo
+Si bien la protección volumétrica actual garantiza la resiliencia base, se transfiere al equipo de operaciones el deber de monitorear el comportamiento de las IPs bajo arquitecturas de red complejas (Carrier-grade NAT). Se recomienda el análisis constante de las cabeceras `X-Forwarded-For` en los logs de los servidores en Producción para afinar la precisión del bloqueo en caso de falsos positivos sistémicos.
 
-## 4. Próximos Pasos Posteriores al Trimestre
-- Analizar los registros (logs) de producción para dimensionar la incidencia de alertas tipo `429` generadas por uso real.
-- Validar con el área de operaciones si es requerido conectar este limitador a un almacén de caché distribuido (como Redis) en futuros rediseños o escalados de instancias (pods).
+## 4. Inventario de Entregables Finales (Handover Tecnológico)
 
----
+El blindaje de monitoreo y la estrategia de contención se formaliza con la transferencia de los siguientes artefactos aprobados:
+- Entregable CMMI (06) **Pruebas de Estrés**, validando el comportamiento volumétrico del sistema.
+- Entregable CMMI (04) **Pruebas Funcionales**, certificando la intercepción adecuada (respuesta HTTP 429) por parte de las defensas del sistema sin degradación del resto de servicios.
 
-**Comentarios adicionales:**
-Con las acciones efectuadas en junio, la organización cierra el trimestre con una madurez sustancial en la detección temprana y mitigación activa de ráfagas anómalas (observabilidad volumétrica), mitigando amenazas del Top 10 de OWASP.
+Estos activos acreditan que el servicio se entrega altamente resiliente y equipado para la operación crítica institucional.

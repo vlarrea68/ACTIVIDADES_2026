@@ -1,4 +1,4 @@
-# Informe de Optimización y Rendimiento de Bases de Datos
+# Acta de Cierre: Optimización y Rendimiento de Bases de Datos
 
 **Mes:** Junio 2026  
 **Responsable:** Victor Manuel Lelo de Larea Polanco  
@@ -7,29 +7,28 @@
 ---
 
 ## 1. Objeto del Entregable
-Documentar los resultados finales del trimestre en materia de optimización de rendimiento y cargas transaccionales hacia bases de datos. Durante junio, el foco resolutivo recayó sobre la Plataforma de Inteligencia Analítica (MUSEMS), remediando cuellos de botella criptográficos que afectaban la validación asíncrona contra Oracle 19c.
+Documentar los resultados finales y la transferencia tecnológica en materia de optimización de rendimiento y cargas transaccionales para la Plataforma de Inteligencia Analítica (MUSEMS). Este documento certifica la consolidación estructural de la capa de datos en su versión *Release Candidate 1 (RC1)*, desplegada y validada en el ambiente de Aseguramiento de Calidad (QA).
 
-## 2. Resultados Consolidados de Junio
+## 2. Consolidación de Arquitectura de Datos (Oracle 19c)
 
-### 2.1 Refactorización de Capa de Autenticación (Issue #55)
-Se abordó un problema estructural que amenazaba el rendimiento del sistema en picos de concurrencia. Se eliminó la dependencia obsoleta `passlib`, la cual incrementaba el procesamiento en CPU al validar credenciales, reemplazándose con el uso directo de `bcrypt` nativo. 
-Este ajuste minimizó los ciclos de cómputo en la validación asíncrona de hashes contra los registros de la tabla `CTMU061_USUARIO` en la base de datos, garantizando una respuesta eficiente.
+### 2.1 Refactorización de Capa de Autenticación
+La base de datos y la capa transaccional se entregan habiendo mitigado definitivamente los cuellos de botella detectados en ciclos anteriores. Se erradicó el uso de la dependencia obsoleta `passlib` sustituyéndola por `bcrypt` nativo, lo que alivió considerablemente la carga de estrés criptográfico (CPU) durante las peticiones asíncronas de validación de hashes sobre la tabla `CTMU061_USUARIO`.
 
-### 2.2 Optimización de Pruebas Unitarias
-Se solucionó una falla crítica en la recolección de pruebas (*collection phase* de `pytest`) que mantenía interacciones activas con la base de datos durante la fase de carga estática de los módulos. Al aislar correctamente los módulos de prueba, se liberó estrés innecesario sobre la base de datos Oracle durante los ciclos de CI en desarrollo.
+### 2.2 Expansión del Modelado Analítico
+Se transfieren a la base de conocimiento 9 (nueve) vistas lógicas altamente optimizadas que sustentan la plataforma BI. Destaca la inclusión e indexación de la 9ª vista analítica, `VW_BI_MUSEMS_HISTORICO_CURP`, certificada y documentada formalmente en el *Diccionario de Datos Institucional*.
 
-### 2.3 Resiliencia en Conexión
-La configuración final del *connection pool* de `oracledb` fue verificada para el release final (RC1) desplegado en la IP `168.255.101.67:1530/MUSEMSD`. Se aseguró que el flujo backend gestione el *Thin Mode Pool* sin saturar las sesiones en Oracle, permitiendo transacciones concurrentes seguras y de baja latencia.
+### 2.3 Resiliencia y Concurrencia (QA)
+La infraestructura entregada en QA (`168.255.101.67:1530/MUSEMSD`, esquema `MUSEMSQA`) fue probada bajo condiciones de concurrencia mediante el aprovisionamiento de un *Thin Mode Pool* configurado en la capa de `oracledb`. Esta configuración garantiza un balance óptimo de transacciones sin monopolizar los hilos (*threads*) del servidor de base de datos de la SEP.
 
-## 3. Riesgos Remanentes y Conclusiones
-- **Riesgos Mitigados:** El sistema ya no presenta vulnerabilidades de degradación de servicio a nivel de base de datos provocadas por ineficiencias criptográficas. Se ha logrado un rendimiento óptimo en la ruta crítica del *login*.
-- **Riesgo Operativo Futuro:** Como pendiente (Backlog QA), se recomienda ejecutar un `EXPLAIN PLAN` en Oracle sobre la vista analítica `VW_BI_MUSEMS_REINSCRIPCIONES` en producción para afinar la indexación en caso de observarse lentitud al graficar trayectorias extensas.
+## 3. Instructivo Técnico y Riesgos Operativos
+La solución se entrega estabilizada. No obstante, se extienden las siguientes recomendaciones de mantenimiento para el equipo receptor:
+- **Tuning Avanzado:** Efectuar una auditoría periódica de ejecución (`EXPLAIN PLAN`) sobre las vistas más pesadas (como `VW_BI_MUSEMS_REINSCRIPCIONES`) si el volumen de datos ingestados en Producción sobrepasa los márgenes esperados para evitar retrasos en el renderizado del front-end.
 
-## 4. Próximos Pasos Posteriores a Junio
-- Monitorear en producción (QA y PROD) los tiempos de respuesta bajo carga viva sobre las vistas analíticas de negocio de MUSEMS.
-- Aplicar las estrategias de índices sobre las tablas maestras si se detectan latencias superiores a 1.5 segundos en la interfaz.
+## 4. Inventario de Entregables Finales (Handover Tecnológico)
 
----
+Como acta de cierre operativo para el área de bases de datos, se transfiere:
+- Acervo DDL completo en el directorio `00-Central_Data_Base/`.
+- Entregable CMMI (09) **Diagrama Entidad Relación**, generado e incrustado automáticamente con renderizado en alta definición.
+- Entregable CMMI (10) **Diccionario de Datos**, cubriendo integralmente todas las entidades transaccionales y las 9 vistas analíticas oficiales.
 
-**Comentarios adicionales:**
-El trimestre se cierra confirmando que la infraestructura de datos en MUSEMS ha sido entregada estable y escalable, eliminando dependencias tóxicas y preservando el performance de lectura y validación.
+La capa de datos se considera oficialmente entregada, trazable y operativa.

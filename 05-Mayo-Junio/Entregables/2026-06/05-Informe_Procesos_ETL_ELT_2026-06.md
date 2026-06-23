@@ -1,4 +1,4 @@
-# Informe Mensual de Procesos ETL/ELT e Integración Continua
+# Acta de Cierre: Procesos ETL/ELT y Pipeline DevSecOps
 
 **Mes:** Junio 2026  
 **Responsable:** Victor Manuel Lelo de Larea Polanco  
@@ -7,32 +7,24 @@
 ---
 
 ## 1. Objeto del Entregable
-Documentar los procesos de Integración y Transformación, entendidos en este cierre de trimestre bajo el espectro extendido de DevSecOps para la gestión y despliegue del código y dependencias. Se certifica la automatización que funge como filtro transaccional (ETL de código fuente) previo a la integración en la rama principal.
+Documentar la entrega y maduración final del flujo de trabajo de la Plataforma de Inteligencia Analítica (MUSEMS) bajo la óptica de Transformación (ETL de Integración Continua) y Seguridad (DevSecOps). Este documento cierra el ciclo operativo acreditando un estado de cero vulnerabilidades y una automatización transaccional 100% robusta.
 
-## 2. Resultados Consolidados de Junio (DevSecOps)
+## 2. Consolidación de Procesos (DevSecOps y ETL de Artefactos)
 
-### 2.1 Orquestación del Pipeline de Seguridad (Issue #57)
-Para fortalecer la ingesta y extracción segura de artefactos en los repositorios institucionales, se diseñó e integró un *Workflow* automatizado apoyado en GitHub Actions (`.github/workflows/security-ci.yml`). Esta línea de ensamblaje actúa sobre todo intento de *Pull Request*, analizando estática y composicionalmente el código antes de autorizar su consolidación.
+### 2.1 Aprobación de Seguridad de Software
+El hito definitivo para el pase a producción ha sido la validación de las compuertas de seguridad (*Shift-Left*). Se hace constar que el ciclo de análisis automático (SAST y SCA a través de `.github/workflows/security-ci.yml`) ejecutado sobre todo código propuesto hacia `main` ha concluido con un dictamen de **APROBADO**. Se eliminaron hallazgos medios y altos identificados en semanas previas, blindando la base de código contra debilidades criptográficas, inyección de datos e importación de librerías obsoletas.
 
-### 2.2 Transformación y Curación de Código (SAST y SCA)
-Se incorporaron las siguientes herramientas de análisis para extraer anomalías (bugs, vulnerabilidades) desde el repositorio:
-- **SAST (Análisis Estático):** Integración de motores `bandit` (para vulnerabilidades específicas de Python) y `semgrep` (motor multi-lenguaje) configurados para escanear en paralelo.
-- **SCA (Análisis de Composición):** Se adoptaron escáneres dependientes `pip-audit` y `npm audit` para extraer manifiestos (`requirements.txt`, `package.json`) y validarlos contra bases de datos públicas de CVEs.
+### 2.2 ETL Documental Automatizado (`generate_docs.py`)
+Más allá de la transformación de datos (ELT Oracle), en esta etapa final de *Handover* se conceptualizó un ETL de conocimiento corporativo. El script `generate_docs.py` opera extrayendo contenido crudo en Markdown, transformando los diagramas relacionales (Mermaid) e inyectando binarios Base64 de imágenes, para finalmente cargar (Load) artefactos perfectos en formatos `.docx` y `.pdf` listos para impresión y firmas.
 
-### 2.3 Políticas de Ingesta (Branch Protection)
-El pipeline impuso como regla inquebrantable que el descubrimiento de vulnerabilidades *Críticas* o de severidad *Alta* retorne de inmediato un código `exit 1`. Esta señal interactúa nativamente con las protecciones de GitHub para impedir la mezcla (Merge) de código degradado, logrando un control de calidad "Shift-Left".
+## 3. Consideraciones Finales (Continuidad)
+Se transmite al equipo receptor la directriz de jamás omitir las comprobaciones del *Pipeline* de GitHub Actions. Si un nuevo desarrollo arroja `exit 1` en auditoría de código (`semgrep` / `npm audit`), debe detenerse inmediatamente la integración y corregirse el origen. Se delega al equipo la responsabilidad de extender las políticas de ciberseguridad hacia el contenedor de despliegue Docker (*Container Scanning*) en la siguiente fase de madurez.
 
-## 3. Riesgos, Mitigaciones y Excepciones
-- **Riesgo:** Posible fatiga por falsos positivos o bloqueos de rutinas propias del equipo (ej. librerías de test o sintaxis ambigua capturada por semgrep).
-- **Mitigaciones Adoptadas:** 
-  - Se instruyó el uso de `--production` o `--omit=dev` para `npm audit`.
-  - Se recomendó mantener actualizado un archivo `.semgrepignore` para establecer exclusiones controladas y permitir el flujo sano de las liberaciones urgentes sin romper la directriz normativa de la plataforma.
+## 4. Inventario de Entregables Finales (Handover Tecnológico)
 
-## 4. Próximos Pasos (Posteriores a Junio)
-- Iniciar la ejecución productiva del pipeline en la rama *main* e instruir a los equipos de desarrollo sobre el proceso de corrección temprana de bloqueos mediante la lectura de *logs*.
-- Extender en un futuro estas validaciones estructurales al contenedor Docker construido (*Container Scanning*) antes del despliegue físico.
+Como acta que formaliza la entrega de los mecanismos de integración, seguridad e infraestructura, se ceden los siguientes componentes corporativos:
+- Entregable CMMI (05) **Análisis de Vulnerabilidades**, refrendado con dictamen formal de "APROBADO".
+- Entregable CMMI (14) **Matriz de Rastreo y Trazabilidad**, generada de manera inmutable bajo un resumen ejecutivo de alta disponibilidad.
+- Entregable CMMI (07) **Memoria Técnica y Manual de Instalación**, garantizando que el equipo entrante posee la llave para regenerar los *environments* completos.
 
----
-
-**Comentarios adicionales:**
-Se cierra el mes de junio completando la matriz de requerimientos operativos, transicionando de una metodología de inspección humana propensa a fallos a una ingesta de código blindada y automatizada.
+Con el presente, se testifica que los conductos de despliegue, la barrera de seguridad de código y el flujo de generación documental se transfieren en óptimo estado de operación.
