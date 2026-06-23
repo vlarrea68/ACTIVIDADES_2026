@@ -67,8 +67,8 @@ A lo largo del proyecto, la inyección y limpieza de datos fueron normalizadas e
 | `MENORES_SIN_PADECIMIENTO.csv` | Filtro de Exclusión Positiva. | `curp_hash`. Solo se almacenan los hashes. | Al cruzarse con el padrón, los excluye de la generación de la carta invitación. (No requieren ir a clínica). |
 | `IMSS_Diagnostico.json` | Filtro de Exclusión de Seguimiento. | `nss`, `folio_atencion`. | Menores que, aunque tenían padecimiento, ya generaron historia clínica en el IMSS. Son excluidos para evitar re-enviar la carta. |
 
-> [!WARNING]
-> **Aviso Crítico a Operaciones:** Se debe purgar periódicamente el historial de `LayMenorEvaluado.csv` en el entorno productivo post-procesamiento. Su permanencia indefinida transgrede normativas de PII al almacenar archivos planos no encriptados.
+**Advertencia:**
+**Aviso Crítico a Operaciones:** Se debe purgar periódicamente el historial de `LayMenorEvaluado.csv` en el entorno productivo post-procesamiento. Su permanencia indefinida transgrede normativas de PII al almacenar archivos planos no encriptados.
 
 ---
 

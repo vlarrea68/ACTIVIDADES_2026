@@ -1,8 +1,8 @@
 $ErrorActionPreference = "Stop"
 
 $templateCmd = "c:\VLP\GitHub\ACTIVIDADES_2026\generar_docx_desde_template.ps1"
-$templatePath = (Get-ChildItem -Path "c:\VLP\GitHub\ACTIVIDADES_2026\EjemploDiagn*sticoDelEcosistemaDeDatos.docx").FullName
-$signatureMarker = "3. Sección de firmas"
+$templatePath = (Get-ChildItem -Path "c:\VLP\GitHub\ACTIVIDADES_2026\TEMPLATE PARA REPORTES MENSUALES.docx").FullName
+$signatureMarker = "8. Sección de firmas"
 $signatureHeading = "8. Sección de firmas"
 
 Write-Host "Generando Institucional General 2026-06..."

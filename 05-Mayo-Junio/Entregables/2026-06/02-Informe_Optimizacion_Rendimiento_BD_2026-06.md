@@ -55,9 +55,9 @@ El verdadero activo de valor (Data Asset) de MUSEMS radica en sus capas lógicas
 8. `VW_BI_MUSEMS_DESEMPENO_ACADEMICO`: Promedios ponderados por clúster escolar y semestre.
 9. **`VW_BI_MUSEMS_HISTORICO_CURP` (Nueva Adición Junio 2026):** Integra formalmente y centraliza la sábana completa de transiciones cronológicas del estudiante; es la tabla vital detrás del buscador visual estilo "píldora" (*Pill-Design*) y es la única que requiere permisos PII especiales para desencriptar información sensible.
 
-> [!TIP]  
-> **Recomendación para DBA Entrante (Tuning Backlog):**  
-> Dada la dimensionalidad creciente, se instruye al equipo de DBAs del área de Operaciones revisar mensualmente el `EXPLAIN PLAN` de la vista `VW_BI_MUSEMS_REINSCRIPCIONES`. Si el costo relativo (Cost) excede los umbrales esperados tras el cierre del próximo ciclo escolar masivo, se recomienda instrumentar Índices de Bitmaps o considerarla candidata para Vista Materializada (`MATERIALIZED VIEW`) de refresco nocturno.
+**Sugerencia:**
+**Recomendación para DBA Entrante (Tuning Backlog):**  
+Dada la dimensionalidad creciente, se instruye al equipo de DBAs del área de Operaciones revisar mensualmente el `EXPLAIN PLAN` de la vista `VW_BI_MUSEMS_REINSCRIPCIONES`. Si el costo relativo (Cost) excede los umbrales esperados tras el cierre del próximo ciclo escolar masivo, se recomienda instrumentar Índices de Bitmaps o considerarla candidata para Vista Materializada (`MATERIALIZED VIEW`) de refresco nocturno.
 
 ---
 
