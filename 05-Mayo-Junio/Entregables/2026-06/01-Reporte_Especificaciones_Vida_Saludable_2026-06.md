@@ -1,7 +1,7 @@
 # Reporte Ejecutivo de Impacto y Aportaciones de Valor (Vida Saludable Fase 2)
 
 **Mes de Corte:** Junio 2026  
-**Periodo Abarcado:** Abril - Mayo - Junio 2026  
+**Periodo Abarcado:** Junio 2026  
 **Responsable:** Victor Manuel Lelo de Larrea Polanco  
 **Área:** Coordinación de Proyectos de TI  
 
