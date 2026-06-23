@@ -1,4 +1,4 @@
-# Reporte Ejecutivo de Impacto y Resultados Estratégicos (Trimestre de Cierre)
+# Reporte Ejecutivo de Resultados y Aportaciones de Valor (Trimestre de Cierre)
 
 **Mes de Corte:** Junio 2026  
 **Periodo Abarcado:** Abril - Mayo - Junio 2026  
@@ -7,39 +7,42 @@
 
 ---
 
-## 1. Resumen Ejecutivo y Visión Estratégica
+## 1. Resumen de Aportaciones al Área de TI
 
-El presente documento expone los resultados integrales, el impacto organizacional y el valor estratégico entregado durante la gestión del último trimestre en la Coordinación de Proyectos de TI. Durante este periodo, se lideró la estabilización, modernización y entrega definitiva del **Motor Orquestador de Vida Saludable (Fase 2)** y componentes críticos institucionales.
+El presente documento tiene como finalidad exponer de manera clara los resultados alcanzados y el valor aportado a la organización durante el último trimestre. El objetivo principal de este periodo fue asegurar que los sistemas críticos de la institución funcionen de manera rápida, segura y sin interrupciones, preparando el terreno tecnológico para los próximos años.
 
-El enfoque de esta gestión trascendió la mera ejecución técnica, priorizando la creación de valor a través de la **resolución proactiva de problemas complejos**, la **optimización de recursos institucionales**, la **garantía de cumplimiento normativo** y el **liderazgo en la transición tecnológica**. Se entregan ecosistemas maduros, eficientes y alineados con los más altos estándares de calidad y gobernanza de la Secretaría.
-
----
-
-## 2. Competencias Demostradas y Logros Clave
-
-### 2.1 Liderazgo Tecnológico y Visión de Arquitectura
-Se detectó oportunamente que los sistemas heredados operaban bajo esquemas monolíticos que representaban riesgos de escalabilidad a futuro. Ejerciendo una visión estratégica:
-- Se lideró la transición hacia arquitecturas modernas (Microservicios, FastAPI), garantizando la viabilidad de los sistemas a largo plazo.
-- Se coordinó el rediseño de las bases de datos para soportar altos volúmenes de concurrencia, asegurando que la institución cuente con plataformas resilientes capaces de atender picos masivos de demanda sin degradación del servicio.
-
-### 2.2 Gestión de Riesgos y Cumplimiento Normativo (Compliance)
-La protección de la información sensible y el apego a la legalidad fueron pilares innegociables durante la ejecución de los proyectos. 
-- **Protección de Datos Personales:** Se identificaron y mitigaron proactivamente riesgos relacionados con el manejo de datos sensibles (LGPDPPSO), implementando algoritmos de enmascaramiento y transicionando hacia cifrados robustos (AES-256-GCM).
-- **Gobernanza de Seguridad:** Se instauraron barreras automatizadas de auditoría que garantizan que ningún código sea aprobado si no cumple con las políticas de cero vulnerabilidades. Esta cultura de prevención blinda a la institución ante posibles contingencias.
-
-### 2.3 Innovación y Orientación a Resultados
-Frente a los retos de interoperabilidad con dependencias externas (ej. Web Services del IMSS), se aplicaron soluciones innovadoras enfocadas en la eficiencia operativa.
-- Se resolvieron bloqueos institucionales (como las restricciones de tráfico) diseñando algoritmos de control de peticiones e hilos de procesamiento asíncrono, logrando **tasas de éxito superiores al 99%** en la descarga de expedientes.
-- Se entregó una solución que procesa grandes volúmenes de información en una fracción del tiempo original, optimizando drásticamente los recursos computacionales y humanos de la Secretaría.
-
-### 2.4 Mejora Continua y Estandarización de Procesos
-Para asegurar que el valor generado perdure más allá de la gestión actual, se implementó una estrategia robusta de transferencia de conocimiento y automatización.
-- **Trazabilidad Institucional:** Todo el trabajo fue mapeado y documentado exhaustivamente, asegurando un *Handover* (transferencia) transparente y profesional.
-- La evidencia técnica de estas resoluciones y habilidades de pensamiento complejo se desglosa en la siguiente sección.
+El enfoque de trabajo se basó en el compromiso, el liderazgo de proyectos y la constante búsqueda de soluciones a problemas complejos, logrando entregar a la institución plataformas tecnológicas mucho más confiables y fáciles de mantener para los futuros equipos de trabajo.
 
 ---
 
-## 3. Evidencia de Gestión Técnica y Solución de Problemas Complejos
+## 2. Competencias Profesionales y Logros Destacados
+
+### 2.1 Liderazgo en la Modernización de Sistemas
+Se identificó que algunos de los sistemas actuales estaban construidos con tecnologías que dificultarían su crecimiento a futuro. Tomando la iniciativa:
+- Se lideró la transición hacia nuevas metodologías de desarrollo y arquitectura, lo que permite que hoy las plataformas sean mucho más rápidas y no se bloqueen cuando muchos usuarios las utilizan al mismo tiempo.
+- Se coordinó el trabajo necesario para que la información se procese y se guarde de manera más eficiente, ahorrando recursos y tiempo a la institución.
+
+### 2.2 Compromiso con la Seguridad y Manejo Ético de la Información
+La protección de la información de los usuarios fue una prioridad innegociable a lo largo de todo el trimestre.
+- **Protección de Datos Sensibles:** Se implementaron controles de seguridad avanzados para garantizar que los datos personales de los ciudadanos estén siempre protegidos, cumpliendo estrictamente con la normativa y evitando riesgos para la institución.
+- **Prevención de Errores:** Se establecieron filtros automáticos de calidad que revisan el trabajo antes de ser publicado. Esta cultura de prevención asegura que no se introduzcan fallos de seguridad o errores graves en los sistemas institucionales.
+
+### 2.3 Solución de Problemas y Orientación a Resultados
+Durante la colaboración con otras dependencias del gobierno (como el IMSS), surgieron bloqueos técnicos que impedían el correcto flujo de información.
+- Gracias a un análisis detallado y a la propuesta de soluciones innovadoras, se lograron superar estas barreras de comunicación inter-institucional.
+- Como resultado, las conexiones entre dependencias ahora funcionan casi a la perfección (con más del 99% de éxito), permitiendo descargar y procesar miles de expedientes de manera automática y sin intervención manual.
+
+### 2.4 Mejora Continua y Documentación del Conocimiento
+Para garantizar que el trabajo realizado aporte valor a largo plazo, se puso un gran énfasis en la documentación y la transferencia del conocimiento.
+- Se crearon herramientas que ayudan a generar manuales y reportes de manera automática, lo que ahorra muchas horas de trabajo administrativo al equipo de TI.
+- Todo el trabajo realizado se documentó detalladamente y de forma profesional, asegurando que cualquier persona que retome estos proyectos en el futuro cuente con una guía clara y completa (la evidencia de este esfuerzo técnico se adjunta a continuación).
+
+---
+
+## 3. Evidencia Documental de las Soluciones Implementadas
+
+*(El siguiente apartado técnico sirve como respaldo del trabajo de ingeniería realizado, demostrando la profundidad de análisis, el diseño de soluciones y la capacidad de ejecución durante el trimestre).*
+
 
 *(El siguiente apartado técnico-forense sirve como respaldo documental de la capacidad de análisis profundo, diseño arquitectónico y ejecución resolutiva aplicada durante el periodo reportado).*
 
